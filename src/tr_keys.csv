@@ -1,0 +1,27 @@
+key,en,ru
+ui_pause,Pause,Пауза
+ui_retry,Retry,Еще Раз
+ui_continue,Continue,Продолжить
+ui_key_none,No Key,Нет Клавиши
+ui_fullscreen,Full Screen,Полный Экран
+ui_particles,Enable Particles,Включить Частицы
+ui_sound_settings,Sound Settings,Звук
+ui_video_settings,Video Settings,Видео
+ui_key_bindings,Key Bindings,Управление
+ui_master_volume,Master,Общий
+ui_music_volume,Music,Музыка
+ui_sfx_volume,SFX,Эффекты
+ui_speech_volume,Speech,Голос
+ui_start_game,Start,Старт
+ui_settings,Settings,Настройки
+ui_tutorial,Tutorial,Как Играть
+ui_credits,Credits,Благодарности
+ui_back_to_title,Back,Назад
+ui_quit,Quit,Выход
+key_up,Up,Вверх
+key_down,Down,Вниз
+key_left,Left,Влево
+key_right,Right,Вправо
+key_system_pause,Pause,Пауза
+txt_credits,"Thank you for playing","Спасибо за то что играли"
+txt_tutorial,"How to play","Как играть"

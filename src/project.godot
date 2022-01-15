@@ -1,0 +1,123 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Control",
+"class": "CreditsScene",
+"language": "GDScript",
+"path": "res://title_screen/credits/credits_scene.gd"
+}, {
+"base": "Node",
+"class": "Fader",
+"language": "GDScript",
+"path": "res://ui/fader.gd"
+}, {
+"base": "Button",
+"class": "KeyBindingButton",
+"language": "GDScript",
+"path": "res://title_screen/settings/keybinding_button.gd"
+}, {
+"base": "Control",
+"class": "SettingsScene",
+"language": "GDScript",
+"path": "res://title_screen/settings/settings_scene.gd"
+}, {
+"base": "Control",
+"class": "TitleScene",
+"language": "GDScript",
+"path": "res://title_screen/title/title_scene.gd"
+}, {
+"base": "Control",
+"class": "TutorialScene",
+"language": "GDScript",
+"path": "res://title_screen/tutorial/tutorial_scene.gd"
+} ]
+_global_script_class_icons={
+"CreditsScene": "",
+"Fader": "",
+"KeyBindingButton": "",
+"SettingsScene": "",
+"TitleScene": "",
+"TutorialScene": ""
+}
+
+[application]
+
+config/name="gwj41"
+run/main_scene="res://splash_screen/splash_screen.tscn"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[autoload]
+
+ErrorHandler="*res://util/error_handler.gd"
+Settings="*res://util/settings.gd"
+UserSaveData="*res://util/user_save_data.gd"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+system_pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[locale]
+
+locale_filter=[ 1, [ "en", "ru", "uk" ] ]
+translations=PoolStringArray( "res://tr_keys.en.translation", "res://tr_keys.ru.translation" )
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://title_screen/tutorial/tutorial_scene.gd" type="Script" id=1]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_right = 824.0
+margin_bottom = 14.0
+text = "How To Play"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_top = 18.0
+margin_right = 824.0
+margin_bottom = 376.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="BackToTitleButton" type="Button" parent="."]
+margin_left = 357.0
+margin_top = 380.0
+margin_right = 467.0
+margin_bottom = 400.0
+size_flags_horizontal = 4
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = "ui_back_to_title"

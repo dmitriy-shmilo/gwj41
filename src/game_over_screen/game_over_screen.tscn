@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_over_screen/game_over_screen.gd" type="Script" id=1]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+
+[node name="GameOverScreen" type="VBoxContainer"]
+anchor_top = 0.00115601
+anchor_right = 1.0
+anchor_bottom = 1.00116
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_right = 824.0
+margin_bottom = 13.0
+size_flags_vertical = 2
+text = "Game Over :("
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 381.0
+margin_right = 824.0
+margin_bottom = 400.0
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+margin_left = 333.0
+margin_right = 387.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 50, 0 )
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = "ui_quit"
+
+[node name="RetryButton" type="Button" parent="HBoxContainer"]
+margin_left = 391.0
+margin_right = 491.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 100, 0 )
+shortcut_in_tooltip = false
+text = "ui_retry"
+
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]

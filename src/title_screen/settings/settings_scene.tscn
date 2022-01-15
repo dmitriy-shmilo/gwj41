@@ -1,0 +1,273 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://title_screen/settings/settings_scene.gd" type="Script" id=1]
+[ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://title_screen/settings/key_binding_popup.gd" type="Script" id=4]
+
+[node name="Settings" type="Control"]
+anchor_left = 0.00125241
+anchor_right = 1.00125
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 31.0
+margin_right = -48.9985
+margin_bottom = -10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+margin_right = 926.0
+margin_bottom = 13.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ui_settings"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 17.0
+margin_right = 926.0
+margin_bottom = 536.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 919.0
+margin_bottom = 512.0
+
+[node name="SoundSettings" type="Control" parent="VBoxContainer/PanelContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 48.0
+margin_right = -7.0
+margin_bottom = -7.0
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -28.0
+margin_right = 150.0
+margin_bottom = 28.0
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_right = 300.0
+margin_bottom = 16.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume"]
+margin_right = 96.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_master_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume"]
+margin_left = 100.0
+margin_right = 300.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 36.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume"]
+margin_left = 6.0
+margin_right = 96.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_music_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume"]
+margin_left = 100.0
+margin_right = 300.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="SfxVolume" type="HBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container"]
+margin_top = 40.0
+margin_right = 300.0
+margin_bottom = 56.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume"]
+margin_left = 18.0
+margin_right = 96.0
+margin_bottom = 16.0
+size_flags_horizontal = 10
+size_flags_vertical = 1
+text = "ui_sfx_volume"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume"]
+margin_left = 100.0
+margin_right = 300.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 2
+
+[node name="VideoSettings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 35.0
+margin_right = -7.0
+margin_bottom = -7.0
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/VideoSettings"]
+margin_left = 396.0
+margin_top = 197.0
+margin_right = 502.0
+margin_bottom = 265.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container"]
+margin_right = 98.0
+margin_bottom = 16.0
+text = "ui_fullscreen"
+
+[node name="ParticlesCheckbox" type="CheckBox" parent="VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container"]
+margin_top = 36.0
+margin_right = 98.0
+margin_bottom = 52.0
+text = "ui_particles"
+
+[node name="KeyBindings" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 35.0
+margin_right = -7.0
+margin_bottom = -7.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer/TabContainer/KeyBindings"]
+margin_left = 449.0
+margin_top = 231.0
+margin_right = 449.0
+margin_bottom = 231.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 4
+
+[node name="BackToTitleButton" type="Button" parent="VBoxContainer"]
+margin_left = 409.0
+margin_top = 540.0
+margin_right = 517.0
+margin_bottom = 559.0
+size_flags_horizontal = 4
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = "ui_back_to_title"
+
+[node name="KeyBindingPopup" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -102.5
+margin_top = -58.0
+margin_right = 102.5
+margin_bottom = 58.0
+popup_exclusive = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KeyBindingPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -7.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionLabel" type="Label" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 16.0
+margin_right = 206.0
+margin_bottom = 29.0
+align = 1
+
+[node name="Label" type="Label" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 33.0
+margin_right = 206.0
+margin_bottom = 46.0
+text = "Press a key..."
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 50.0
+margin_right = 206.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KeyBindingPopup/VBoxContainer"]
+margin_top = 74.0
+margin_right = 206.0
+margin_bottom = 99.0
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
+margin_right = 80.0
+margin_bottom = 25.0
+focus_mode = 0
+text = "Cancel"
+
+[node name="ClearButton" type="Button" parent="KeyBindingPopup/VBoxContainer/HBoxContainer"]
+margin_left = 84.0
+margin_right = 206.0
+margin_bottom = 25.0
+focus_mode = 0
+text = "Clear Binding"
+
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider" to="." method="_on_MasterVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider" to="." method="_on_SfxVolumeSlider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container/ParticlesCheckbox" to="." method="_on_ParticlesCheckbox_toggled"]
+[connection signal="pressed" from="VBoxContainer/BackToTitleButton" to="." method="_on_BackToTitleButton_pressed"]
+[connection signal="action_remapped" from="KeyBindingPopup" to="." method="_on_KeyBindingPopup_action_remapped"]
+[connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_KeybindingCancelButton_pressed"]
+[connection signal="pressed" from="KeyBindingPopup/VBoxContainer/HBoxContainer/ClearButton" to="KeyBindingPopup" method="_on_ClearButton_pressed"]

@@ -1,0 +1,6 @@
+.DS_Store
+src/.import/
+build/
+logs/
+
+*.translation
