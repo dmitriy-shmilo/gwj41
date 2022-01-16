@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
+[ext_resource path="res://game_screen/submarine.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 957.241, 10 )
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource( 1 )
@@ -57,6 +61,31 @@ margin_left = 242.0
 margin_right = 328.0
 margin_bottom = 20.0
 text = "ui_continue"
+
+[node name="Submarine" parent="." instance=ExtResource( 3 )]
+position = Vector2( 182.839, 272.743 )
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 574.185, 1.67645 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 574.185, 599.986 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( -1.9729, 403.4 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds"]
+position = Vector2( 1029.18, 403.4 )
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

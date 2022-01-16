@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://title_screen/settings/keybinding_button.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://game_screen/player.gd"
+}, {
 "base": "Control",
 "class": "SettingsScene",
 "language": "GDScript",
@@ -43,6 +48,7 @@ _global_script_class_icons={
 "CreditsScene": "",
 "Fader": "",
 "KeyBindingButton": "",
+"Player": "",
 "SettingsScene": "",
 "TitleScene": "",
 "TutorialScene": ""
@@ -51,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj41"
-run/main_scene="res://splash_screen/splash_screen.tscn"
+run/main_scene="res://game_screen/game_screen.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
