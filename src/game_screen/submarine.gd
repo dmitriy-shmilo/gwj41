@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+class_name Submarine
 
 export(float) var speed = 60.0
 export(Vector2) var direction = Vector2.ZERO

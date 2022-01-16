@@ -63,7 +63,7 @@ margin_bottom = 20.0
 text = "ui_continue"
 
 [node name="Submarine" parent="." instance=ExtResource( 3 )]
-position = Vector2( 182.839, 272.743 )
+position = Vector2( 145, 287 )
 
 [node name="Bounds" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -87,5 +87,10 @@ position = Vector2( 1029.18, 403.4 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.66
+autostart = true
+
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
