@@ -7,10 +7,14 @@ const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
 
+var _max_lives = 3
+var _lives = _max_lives
 var _score = 0
+
 
 func _ready() -> void:
 	_spawn(TREASURE_SCENE)
+	_gui.update_lives(_lives, _max_lives)
 
 
 func _unhandled_input(event):
@@ -31,11 +35,20 @@ func _set_score(value: int) -> void:
 	_gui.update_score(_score)
 
 
+func _set_lives(value: int) -> void:
+	# TODO: end run
+	if value < 1:
+		return
+
+	_lives = value
+	_gui.update_lives(value, _max_lives)
+
 func _on_item_collected(item) -> void:
 	if item is Treasure:
 		_set_score(_score + item.value)
 		item.disappear()
 	elif item is Enemy:
+		_set_lives(_lives - 1)
 		item.disappear()
 
 

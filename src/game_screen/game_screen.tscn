@@ -85,6 +85,19 @@ margin_right = 380.0
 margin_bottom = 40.0
 text = "ui_continue"
 
+[node name="LivesContainer" type="HBoxContainer" parent="Gui"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -152.0
+margin_top = 30.0
+margin_right = -47.0
+margin_bottom = 46.0
+custom_constants/separation = 0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Submarine" parent="." instance=ExtResource( 3 )]
 position = Vector2( 145, 287 )
 
