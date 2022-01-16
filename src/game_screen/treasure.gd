@@ -1,8 +1,11 @@
 extends Node2D
+class_name Treasure
 
+signal collected(sender)
 
 export(int) var value = 1 
 export(Vector2) var velocity
+
 
 func _ready() -> void:
 	velocity = Vector2(-50.0, 0.0)
@@ -23,4 +26,4 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if not body is Submarine:
 		return
 	
-	disappear()
+	emit_signal("collected", self)

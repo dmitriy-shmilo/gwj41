@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://game_screen/submarine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/art/ui.png" type="Texture" id=4]
+[ext_resource path="res://game_screen/gui.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 957.241, 10 )
@@ -11,6 +13,27 @@ extents = Vector2( 957.241, 10 )
 script = ExtResource( 1 )
 
 [node name="Gui" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="TreasureIcon" type="Sprite" parent="Gui"]
+position = Vector2( 851, 19 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="TreasureLabel" type="Label" parent="Gui"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -95.0
+margin_top = 2.0
+margin_right = -45.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "x000"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseContainer" type="ColorRect" parent="Gui"]
 visible = false
@@ -38,28 +61,28 @@ __meta__ = {
 }
 
 [node name="PauseTitle" type="Label" parent="Gui/PauseContainer/VBoxContainer"]
-margin_top = 131.0
+margin_top = 115.0
 margin_right = 512.0
-margin_bottom = 145.0
+margin_bottom = 141.0
 text = "ui_pause"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Gui/PauseContainer/VBoxContainer"]
-margin_top = 149.0
+margin_top = 145.0
 margin_right = 512.0
-margin_bottom = 169.0
+margin_bottom = 185.0
 alignment = 1
 
 [node name="QuitButton" type="Button" parent="Gui/PauseContainer/VBoxContainer/HBoxContainer"]
-margin_left = 183.0
-margin_right = 238.0
-margin_bottom = 20.0
+margin_left = 132.0
+margin_right = 230.0
+margin_bottom = 40.0
 text = "ui_quit"
 
 [node name="ContinueButton" type="Button" parent="Gui/PauseContainer/VBoxContainer/HBoxContainer"]
-margin_left = 242.0
-margin_right = 328.0
-margin_bottom = 20.0
+margin_left = 234.0
+margin_right = 380.0
+margin_bottom = 40.0
 text = "ui_continue"
 
 [node name="Submarine" parent="." instance=ExtResource( 3 )]
@@ -70,7 +93,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 574.185, 1.67645 )
+position = Vector2( 574, 2 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
