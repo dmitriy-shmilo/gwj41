@@ -2,6 +2,7 @@ extends Node2D
 
 const SPAWN_OFFSET = 100
 const TREASURE_SCENE = preload("res://game_screen/treasure.tscn")
+const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
 
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
@@ -9,7 +10,7 @@ onready var _gui: Gui = $"Gui"
 var _score = 0
 
 func _ready() -> void:
-	_spawn()
+	_spawn(TREASURE_SCENE)
 
 
 func _unhandled_input(event):
@@ -18,8 +19,8 @@ func _unhandled_input(event):
 		_pause_container.visible = true
 
 
-func _spawn() -> void:
-	var item = TREASURE_SCENE.instance()
+func _spawn(scene) -> void:
+	var item = scene.instance()
 	item.global_position = Vector2(get_viewport().size.x + SPAWN_OFFSET, randi() % 10 * get_viewport().size.y / 10 + 8)
 	item.connect("collected", self, "_on_item_collected")
 	add_child(item)
@@ -33,6 +34,8 @@ func _set_score(value: int) -> void:
 func _on_item_collected(item) -> void:
 	if item is Treasure:
 		_set_score(_score + item.value)
+		item.disappear()
+	elif item is Enemy:
 		item.disappear()
 
 
@@ -49,7 +52,9 @@ func _on_ContinueButton_pressed():
 
 
 func _on_SpawnTimer_timeout() -> void:
-	if randi() % 9 != 0:
-		return
-
-	_spawn()
+	# TODO: spawn more stuff with progress
+	match randi() % 10:
+		0:
+			_spawn(TREASURE_SCENE)
+		1:
+			_spawn(ENEMY_SCENE)

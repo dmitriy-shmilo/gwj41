@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://game_screen/collectable.gd"
+}, {
 "base": "Control",
 "class": "CreditsScene",
 "language": "GDScript",
 "path": "res://title_screen/credits/credits_scene.gd"
+}, {
+"base": "Collectable",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://game_screen/enemy.gd"
 }, {
 "base": "Node",
 "class": "Fader",
@@ -49,7 +59,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://title_screen/title/title_scene.gd"
 }, {
-"base": "Node2D",
+"base": "Collectable",
 "class": "Treasure",
 "language": "GDScript",
 "path": "res://game_screen/treasure.gd"
@@ -60,7 +70,9 @@ _global_script_classes=[ {
 "path": "res://title_screen/tutorial/tutorial_scene.gd"
 } ]
 _global_script_class_icons={
+"Collectable": "",
 "CreditsScene": "",
+"Enemy": "",
 "Fader": "",
 "Gui": "",
 "KeyBindingButton": "",
