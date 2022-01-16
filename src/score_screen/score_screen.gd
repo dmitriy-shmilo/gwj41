@@ -11,4 +11,4 @@ func _on_NewRunButton_pressed() -> void:
 
 
 func _on_ShopButton_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene("res://shop_screen/shop_screen.tscn")
