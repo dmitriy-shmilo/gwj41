@@ -36,9 +36,9 @@ func _set_score(value: int) -> void:
 
 
 func _set_lives(value: int) -> void:
-	# TODO: end run
+	# TODO: update stats and fade
 	if value < 1:
-		return
+		get_tree().change_scene("res://score_screen/score_screen.tscn")
 
 	_lives = value
 	_gui.update_lives(value, _max_lives)

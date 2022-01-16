@@ -3,7 +3,7 @@
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://game_screen/submarine.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/art/ui.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/treasure_icon.tres" type="Texture" id=4]
 [ext_resource path="res://game_screen/gui.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]

@@ -45,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://game_screen/player.gd"
 }, {
 "base": "Control",
+"class": "ScoreScreen",
+"language": "GDScript",
+"path": "res://score_screen/score_screen.gd"
+}, {
+"base": "Control",
 "class": "SettingsScene",
 "language": "GDScript",
 "path": "res://title_screen/settings/settings_scene.gd"
@@ -77,6 +82,7 @@ _global_script_class_icons={
 "Gui": "",
 "KeyBindingButton": "",
 "Player": "",
+"ScoreScreen": "",
 "SettingsScene": "",
 "Submarine": "",
 "TitleScene": "",
