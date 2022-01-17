@@ -40,8 +40,7 @@ func _load() -> void:
 	for upgrade in UPGRADES:
 		if not _milestone_map.has(upgrade.required_progress):
 			_milestone_map[upgrade.required_progress] = []
-		
-		upgrade.purchased = UserSaveData.unlocked_upgrades.has(upgrade.id)
+		upgrade.purchased = UserSaveData.unlocked_upgrades.has(float(upgrade.id))
 		_milestone_map[upgrade.required_progress].append(upgrade)
 	
 	for key in _milestone_map.keys():

@@ -5,7 +5,7 @@ const SAVE_FILE = "user://save.json"
 var current_expedition = 0
 var current_treasure = 0
 var last_recovered_treasure = 0
-var best_distance = 0
+var best_progress = 0
 var unlocked_upgrades = []
 var is_running = true
 var _save_time = 0
@@ -52,7 +52,8 @@ func _get_data() -> Dictionary:
 		"current_treasure" : current_treasure,
 		"last_recovered_treasure" : last_recovered_treasure,
 		"unlocked_upgrades" : unlocked_upgrades,
-		"is_running" : is_running
+		"is_running" : is_running,
+		"best_progress" : best_progress
 	}
 
 
@@ -63,6 +64,7 @@ func _set_from_data(data: Dictionary) -> void:
 	last_recovered_treasure = _get_or_default(data, "last_recovered_treasure", 0)
 	unlocked_upgrades = _get_or_default(data, "unlocked_upgrades", [])
 	is_running = _get_or_default(data, "is_running", true)
+	best_progress = _get_or_default(data, "best_progress", 0)
 
 
 func _get_or_default(data: Dictionary, key: String, default) -> Object:

@@ -10,7 +10,7 @@ onready var _upgrade_price_label = $"SideBarContainer/VBoxContainer/UpgradePrice
 onready var _upgrade_description_label = $"SideBarContainer/VBoxContainer/UpgradeDescriptionLabel"
 
 func _ready() -> void:
-	_current_treasure_label.bbcode_text = tr("txt_treasure_count_right") % UserSaveData.current_treasure
+	_refresh()
 	
 	var milestones = UpgradeRegistry.get_progress_milestones()
 	
@@ -18,6 +18,7 @@ func _ready() -> void:
 		var panel = UPGRADE_PANEL_SCENE.instance()
 		panel.setup(milestone, UpgradeRegistry.get_milestone_upgrades(milestone))
 		panel.connect("upgrade_selected", self, "_on_upgrade_selected")
+		panel.connect("upgrade_purchased", self, "_on_upgrade_purchased")
 		_upgrade_list.add_child(panel)
 
 
@@ -25,7 +26,32 @@ func _on_upgrade_selected(sender, upgrade: Upgrade) -> void:
 	_sidebar_container.visible = true
 	_upgrade_name_label.text = tr(upgrade.title)
 	_upgrade_description_label.text = tr(upgrade.description)
-	_upgrade_price_label.bbcode_text = tr("txt_treasure_count_right") % upgrade.price
+	
+	if upgrade.purchased:
+		_upgrade_price_label.bbcode_text = tr("txt_up_purchased")
+	else:
+		var price = tr("txt_treasure_count_right") % upgrade.price
+		if upgrade.price > UserSaveData.current_treasure:
+			_upgrade_price_label.clear()
+			# TODO: pick a better color
+			_upgrade_price_label.push_color(Color.salmon)
+			_upgrade_price_label.append_bbcode(price)
+			_upgrade_price_label.pop()
+		else:
+			_upgrade_price_label.bbcode_text = price
+
+
+func _on_upgrade_purchased(sender, upgrade: Upgrade) -> void:
+	_refresh()
+	# this will refresh the sidebar
+	_on_upgrade_selected(sender, upgrade)
+
+
+func _refresh() -> void:
+	_current_treasure_label.bbcode_text = tr("txt_treasure_count_right") % UserSaveData.current_treasure
+	
+	for panel in _upgrade_list.get_children():
+		panel.refresh()
 
 
 func _on_NewRunButton_pressed() -> void:
