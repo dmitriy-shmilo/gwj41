@@ -35,8 +35,10 @@ func _on_SettingsButton_pressed():
 func _on_NewGameButton_pressed():
 	_fader.fade_out()
 	yield(_fader, "fade_out_completed")
-	var err = get_tree().change_scene("res://game_screen/game_screen.tscn")
-	ErrorHandler.handle(err)
+	if UserSaveData.is_running:
+		get_tree().change_scene("res://game_screen/game_screen.tscn")
+	else:
+		get_tree().change_scene("res://shop_screen/shop_screen.tscn")
 
 
 func _transition_to(scene: Control) -> void:

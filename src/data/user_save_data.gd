@@ -2,7 +2,18 @@ extends Node
 
 const SAVE_FILE = "user://save.json"
 
+var current_expedition = 0
+var current_treasure = 0
+var last_recovered_treasure = 0
+var best_distance = 0
+var unlocked_upgrades = []
+var is_running = true
 var _save_time = 0
+
+
+func _ready() -> void:
+	load_data()
+
 
 func save_data() -> void:
 	_save_time = OS.get_unix_time()
@@ -36,15 +47,27 @@ func load_data() -> void:
 
 func _get_data() -> Dictionary:
 	return {
-		"_save_time" : _save_time
+		"_save_time" : _save_time,
+		"current_expedition" : current_expedition,
+		"current_treasure" : current_treasure,
+		"last_recovered_treasure" : last_recovered_treasure,
+		"unlocked_upgrades" : unlocked_upgrades,
+		"is_running" : is_running
 	}
 
 
 func _set_from_data(data: Dictionary) -> void:
 	_save_time = _get_or_default(data, "_save_time", 0)
+	current_expedition = _get_or_default(data, "current_expedition", 0)
+	current_treasure = _get_or_default(data, "current_treasure", 0)
+	last_recovered_treasure = _get_or_default(data, "last_recovered_treasure", 0)
+	unlocked_upgrades = _get_or_default(data, "unlocked_upgrades", [])
+	is_running = _get_or_default(data, "is_running", true)
 
 
 func _get_or_default(data: Dictionary, key: String, default) -> Object:
 	if data.has(key):
 		return data[key]
 	return default
+
+

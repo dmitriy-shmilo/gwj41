@@ -18,6 +18,7 @@ ui_tutorial,Tutorial,Как Играть
 ui_credits,Credits,Благодарности
 ui_back_to_title,Back,Назад
 ui_quit,Quit,Выход
+ui_shop_title,"Upgrades","Улучшения"
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево
@@ -25,3 +26,7 @@ key_right,Right,Вправо
 key_system_pause,Pause,Пауза
 txt_credits,"Thank you for playing","Спасибо за то что играли"
 txt_tutorial,"How to play","Как играть"
+txt_score_title,"[center]Expedition #%d complete![/center]","[center]Экспедиция №%d завершена![/center]"
+txt_treasure_count,"[center]  %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
+txt_treasure_count_plus,"[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
+txt_treasure_count_right,"[right]  %d [img]res://assets/art/treasure_icon.tres[/img][/right]",

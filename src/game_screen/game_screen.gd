@@ -13,6 +13,8 @@ var _score = 0
 
 
 func _ready() -> void:
+	UserSaveData.is_running = true
+	UserSaveData.save_data()
 	_spawn(TREASURE_SCENE)
 	_gui.update_lives(_lives, _max_lives)
 
@@ -32,16 +34,25 @@ func _spawn(scene) -> void:
 
 func _set_score(value: int) -> void:
 	_score = value
+	UserSaveData.last_recovered_treasure = value
 	_gui.update_score(_score)
 
 
 func _set_lives(value: int) -> void:
 	# TODO: update stats and fade
 	if value < 1:
-		get_tree().change_scene("res://score_screen/score_screen.tscn")
+		_end_run()
 
 	_lives = value
 	_gui.update_lives(value, _max_lives)
+
+
+func _end_run() -> void:
+	UserSaveData.current_expedition += 1
+	UserSaveData.is_running = false
+	UserSaveData.save_data()
+	get_tree().change_scene("res://score_screen/score_screen.tscn")
+
 
 func _on_item_collected(item) -> void:
 	if item is Treasure:

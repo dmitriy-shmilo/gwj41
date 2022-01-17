@@ -75,6 +75,9 @@ margin_top = -92.0
 margin_right = -117.0
 margin_bottom = -52.0
 text = "ui_quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NewRunButton" type="Button" parent="."]
 anchor_left = 0.5
@@ -86,6 +89,9 @@ margin_top = -92.0
 margin_right = 240.0
 margin_bottom = -52.0
 text = "ui_new_run"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ShopButton" type="Button" parent="."]
 anchor_left = 0.5
