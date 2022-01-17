@@ -14,11 +14,12 @@ var _milestone_map = {}
 
 func _ready() -> void:
 	_load()
-	print(_milestone_map)
 
 
 func get_progress_milestones() -> Array:
-	return _milestone_map.keys().sort()
+	var result = _milestone_map.keys().duplicate()
+	result.sort()
+	return result
 
 
 func get_purchased_upgrades() -> Array:
@@ -31,11 +32,16 @@ func get_purchased_upgrades() -> Array:
 	return result
 
 
+func get_milestone_upgrades(milestone: int) -> Array:
+	return _milestone_map[milestone]
+
+
 func _load() -> void:
 	for upgrade in UPGRADES:
 		if not _milestone_map.has(upgrade.required_progress):
 			_milestone_map[upgrade.required_progress] = []
 		
+		upgrade.purchased = UserSaveData.unlocked_upgrades.has(upgrade.id)
 		_milestone_map[upgrade.required_progress].append(upgrade)
 	
 	for key in _milestone_map.keys():

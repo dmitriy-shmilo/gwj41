@@ -11,3 +11,4 @@ strength = 60
 type = 2
 title = "txt_up_oxygen2"
 description = "txt_up_oxygen2_d"
+purchased = false

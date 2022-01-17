@@ -11,3 +11,4 @@ strength = 1
 type = 1
 title = "txt_up_health3"
 description = "txt_up_health3_d"
+purchased = false

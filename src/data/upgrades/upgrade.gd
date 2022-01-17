@@ -17,3 +17,4 @@ export(int) var type = 0
 export(String) var title = "txt_upgrade_title"
 export(String) var description = "txt_upgrade_description"
 export(Texture) var icon
+export(bool) var purchased = false
