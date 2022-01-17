@@ -5,7 +5,30 @@ const LIFE_ICON_SCENE = preload("res://game_screen/life_icon.tscn")
 
 onready var _treasure_label = $"TreasureLabel"
 onready var _lives_container = $"LivesContainer"
+onready var _run_title_label = $"RunTitleLabel"
+onready var _run_title_tween = $"RunTitleTween"
 
+func show_run_title(text: String) -> void:
+	var height = _run_title_label.rect_size.y
+	var start_y = get_viewport().size.y + height
+	var mid_y = get_viewport().size.y / 2 - height / 2
+	var end_y = -height
+	var start_opacity = 0.0
+	var mid_opacity = 0.5
+	var end_opacity = 0.0
+	
+	_run_title_label.text = text
+	_run_title_tween.stop_all()
+	
+	# fade in
+	_run_title_tween.interpolate_property(_run_title_label, "rect_position", Vector2(0, start_y), Vector2(0, mid_y), 0.66, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_run_title_tween.interpolate_property(_run_title_label, "modulate:a", start_opacity, mid_opacity, 0.66, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	
+	# fade out
+	_run_title_tween.interpolate_property(_run_title_label, "rect_position", Vector2(0, mid_y), Vector2(0, end_y), 0.66, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 1.5)
+	_run_title_tween.interpolate_property(_run_title_label, "modulate:a", mid_opacity, end_opacity, 0.66, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 1.5)
+	_run_title_tween.start()
+	
 func update_score(current: int) -> void:
 	var text = "x000"
 	

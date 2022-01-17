@@ -17,6 +17,7 @@ func _ready() -> void:
 	UserSaveData.save_data()
 	_spawn(TREASURE_SCENE)
 	_gui.update_lives(_lives, _max_lives)
+	_gui.show_run_title(tr("txt_run_title") % (UserSaveData.current_expedition + 1))
 
 
 func _unhandled_input(event):

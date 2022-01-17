@@ -30,3 +30,4 @@ txt_score_title,"[center]Expedition #%d complete![/center]","[center]Экспе�
 txt_treasure_count,"[center]  %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
 txt_treasure_count_plus,"[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
 txt_treasure_count_right,"[right]  %d [img]res://assets/art/treasure_icon.tres[/img][/right]",
+txt_run_title,"Expedition #%d has begun!","Экспедиция №%d началась!"
