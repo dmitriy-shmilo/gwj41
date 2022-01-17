@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/upgrades/upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 2
+price = 50
+required_progress = 100
+strength = 1
+type = 1
+title = "txt_up_health2"
+description = "txt_up_health2_d"

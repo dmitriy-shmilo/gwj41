@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "TutorialScene",
 "language": "GDScript",
 "path": "res://title_screen/tutorial/tutorial_scene.gd"
+}, {
+"base": "Resource",
+"class": "Upgrade",
+"language": "GDScript",
+"path": "res://data/upgrades/upgrade.gd"
 } ]
 _global_script_class_icons={
 "Collectable": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "Submarine": "",
 "TitleScene": "",
 "Treasure": "",
-"TutorialScene": ""
+"TutorialScene": "",
+"Upgrade": ""
 }
 
 [application]
@@ -102,6 +108,7 @@ config/windows_native_icon="res://icon.ico"
 ErrorHandler="*res://util/error_handler.gd"
 Settings="*res://util/settings.gd"
 UserSaveData="*res://data/user_save_data.gd"
+UpgradeRegistry="*res://data/upgrades/upgrade_registry.gd"
 
 [display]
 

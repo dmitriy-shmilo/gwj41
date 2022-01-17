@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/upgrades/upgrade.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = 4
+price = 250
+required_progress = 100
+strength = 120
+type = 2
+title = "txt_up_oxygen3"
+description = "txt_up_oxygen3_d"
