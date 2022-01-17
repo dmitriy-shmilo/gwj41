@@ -33,6 +33,7 @@ txt_treasure_count_right,"[right]  %d [img]res://assets/art/treasure_icon.tres[/
 txt_up_purchased,"[right]Purchased[/right]","[right]Куплено[/right]"
 txt_run_title,"Expedition #%d has begun!","Экспедиция №%d началась!"
 txt_milestone,"%dm",
+txt_current_distance,"%dm",
 txt_up_health1,"Hull Upgrade I",
 txt_up_health2,"Hull Upgrade II",
 txt_up_health3,"Hull Upgrade III",

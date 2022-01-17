@@ -1,5 +1,6 @@
 extends Node2D
 
+const METERS_PER_PIXEL = 0.02
 const SPAWN_OFFSET = 100
 const TREASURE_SCENE = preload("res://game_screen/treasure.tscn")
 const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
@@ -12,7 +13,10 @@ var _max_lives = 1
 var _lives = 1
 var _max_oxygen = 60
 var _oxygen = 60
+var _oxygen_consumption = 1.0
 var _score = 0
+var _distance = 0
+var _speed = 50
 
 func _ready() -> void:
 	_setup()
@@ -48,9 +52,11 @@ func _setup() -> void:
 
 
 func _spawn(scene) -> void:
-	var item = scene.instance()
+	var item = scene.instance() as Collectable
 	item.global_position = Vector2(get_viewport().size.x + SPAWN_OFFSET, randi() % 10 * get_viewport().size.y / 10 + 8)
 	item.connect("collected", self, "_on_item_collected")
+	item.add_to_group("items", true)
+	item.velocity = Vector2(-_speed, 0)
 	add_child(item)
 
 
@@ -70,6 +76,7 @@ func _set_lives(value: int) -> void:
 
 
 func _end_run() -> void:
+	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
 	UserSaveData.is_running = false
 	UserSaveData.save_data()
@@ -104,3 +111,11 @@ func _on_SpawnTimer_timeout() -> void:
 			_spawn(TREASURE_SCENE)
 		1:
 			_spawn(ENEMY_SCENE)
+
+
+func _on_ProgressTimer_timeout() -> void:
+	_oxygen -= _oxygen_consumption
+	_distance += _speed * METERS_PER_PIXEL
+	
+	_gui.update_distance(_distance)
+	_gui.update_oxygen(_oxygen, _max_oxygen)

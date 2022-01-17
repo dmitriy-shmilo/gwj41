@@ -3,10 +3,12 @@ class_name Gui
 
 const LIFE_ICON_SCENE = preload("res://game_screen/life_icon.tscn")
 
-onready var _treasure_label = $"TreasureLabel"
-onready var _lives_container = $"LivesContainer"
-onready var _run_title_label = $"RunTitleLabel"
-onready var _run_title_tween = $"RunTitleTween"
+onready var _distance_label: Label = $"DistanceLabel"
+onready var _oxygen_progress: TextureProgress = $"OxygenProgress"
+onready var _treasure_label: Label = $"TreasureLabel"
+onready var _lives_container: HBoxContainer = $"LivesContainer"
+onready var _run_title_label: Label = $"RunTitleLabel"
+onready var _run_title_tween: Tween = $"RunTitleTween"
 
 func show_run_title(text: String) -> void:
 	var height = _run_title_label.rect_size.y
@@ -62,3 +64,12 @@ func update_lives(current: int, total: int) -> void:
 			node.visible = true
 		else:
 			node.visible = false
+
+
+func update_distance(distance: float) -> void:
+	_distance_label.text = tr("txt_current_distance") % int(distance)
+
+
+func update_oxygen(current: float, total: float) -> void:
+	_oxygen_progress.max_value = total
+	_oxygen_progress.value = current
