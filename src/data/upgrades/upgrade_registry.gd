@@ -26,7 +26,7 @@ func get_purchased_upgrades() -> Array:
 	var result = []
 	
 	for upgrade in UPGRADES:
-		if UserSaveData.unlocked_upgrades.has(upgrade.id):
+		if UserSaveData.unlocked_upgrades.has(float(upgrade.id)):
 			result.append(upgrade)
 
 	return result

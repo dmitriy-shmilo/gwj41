@@ -1,16 +1,20 @@
 extends KinematicBody2D
 class_name Submarine
 
-export(float) var speed = 60.0
+export(float) var up_speed = 50.0
+export(float) var down_speed = 50.0
 export(Vector2) var direction = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	if direction == Vector2.ZERO:
 		return
 
-	direction = direction.normalized()
-
-	move_and_slide(direction * speed)
+	if direction == Vector2.UP:
+		move_and_slide(direction * up_speed)
+		return
+	
+	if direction == Vector2.DOWN:
+		move_and_slide(direction * down_speed)
 
 
 func ascend() -> void:

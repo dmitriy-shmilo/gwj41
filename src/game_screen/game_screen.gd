@@ -6,13 +6,16 @@ const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
 
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
+onready var _submarine: Submarine = $"Submarine"
 
-var _max_lives = 3
-var _lives = _max_lives
+var _max_lives = 1
+var _lives = 1
+var _max_oxygen = 60
+var _oxygen = 60
 var _score = 0
 
-
 func _ready() -> void:
+	_setup()
 	UserSaveData.is_running = true
 	UserSaveData.save_data()
 	_spawn(TREASURE_SCENE)
@@ -24,6 +27,24 @@ func _unhandled_input(event):
 	if event.is_action("system_pause"):
 		get_tree().paused = true
 		_pause_container.visible = true
+
+
+func _setup() -> void:
+	var upgrades = UpgradeRegistry.get_purchased_upgrades()
+	
+	for upgrade in upgrades:
+		match upgrade.type:
+			Upgrade.UpgradeType.health:
+				_max_lives += upgrade.strength
+			Upgrade.UpgradeType.oxygen:
+				_max_oxygen += upgrade.strength
+			Upgrade.UpgradeType.ascend_speed:
+				_submarine.up_speed += upgrade.strength
+			Upgrade.UpgradeType.descend_speed:
+				_submarine.down_speed += upgrade.strength
+	
+	_lives = _max_lives
+	_oxygen = _max_oxygen
 
 
 func _spawn(scene) -> void:
