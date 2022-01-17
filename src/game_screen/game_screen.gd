@@ -75,6 +75,19 @@ func _set_lives(value: int) -> void:
 	_gui.update_lives(value, _max_lives)
 
 
+func _set_oxygen(value: float) -> void:
+	_oxygen = value
+	_gui.update_oxygen(_oxygen, _max_oxygen)
+	
+	if value <= 0:
+		_end_run()
+
+
+func _set_distance(value: float) -> void:
+	_distance = value
+	_gui.update_distance(_distance)
+
+
 func _end_run() -> void:
 	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
@@ -114,8 +127,6 @@ func _on_SpawnTimer_timeout() -> void:
 
 
 func _on_ProgressTimer_timeout() -> void:
-	_oxygen -= _oxygen_consumption
-	_distance += _speed * METERS_PER_PIXEL
+	_set_distance(_distance + _speed * METERS_PER_PIXEL)
+	_set_oxygen(_oxygen - _oxygen_consumption)
 	
-	_gui.update_distance(_distance)
-	_gui.update_oxygen(_oxygen, _max_oxygen)
