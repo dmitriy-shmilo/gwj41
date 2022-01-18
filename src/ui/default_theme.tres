@@ -11,15 +11,15 @@ margin_right = 7.0
 margin_top = 7.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 1 )
-region_rect = Rect2( 64, 32, 16, 16 )
+region_rect = Rect2( 16, 32, 16, 16 )
 margin_left = 7.0
 margin_right = 7.0
 margin_top = 7.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=30]
 texture = ExtResource( 1 )
 region_rect = Rect2( 16, 32, 16, 16 )
 margin_left = 7.0
@@ -150,11 +150,24 @@ expand_margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource( 2 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.858824 )
+Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
 Button/styles/disabled = SubResource( 1 )
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 3 )
+Button/styles/focus = SubResource( 31 )
+Button/styles/hover = SubResource( 30 )
 Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
+CheckBox/colors/font_color = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_focus = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 CheckBox/icons/checked = SubResource( 6 )
 CheckBox/icons/checked_disabled = SubResource( 7 )
 CheckBox/icons/radio_checked = SubResource( 8 )

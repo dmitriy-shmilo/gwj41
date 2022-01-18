@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gwj41"
-run/main_scene="res://game_screen/game_screen.tscn"
+run/main_scene="res://title_screen/title_screen.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
