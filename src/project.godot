@@ -190,4 +190,5 @@ translations=PoolStringArray( "res://tr_keys.en.translation", "res://tr_keys.ru.
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0745098, 0.0745098, 0.517647, 1 )
 environment/default_environment="res://default_env.tres"
