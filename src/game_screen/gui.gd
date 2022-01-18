@@ -58,12 +58,8 @@ func update_lives(current: int, total: int) -> void:
 		life_icons.resize(total)
 	
 	for i in range(total):
-		var node = _lives_container.get_child(i)
-		# TODO: show empty life
-		if i < current:
-			node.visible = true
-		else:
-			node.visible = false
+		var node = _lives_container.get_child(total - i - 1)
+		node.is_full = i < current
 
 
 func update_distance(distance: float) -> void:
