@@ -9,4 +9,5 @@ enum Type {
 }
 
 export(String) var title = "txt_action_unknown"
+export(String) var hint = "txt_action_hint_unknown"
 export(int) var type = 0

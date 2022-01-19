@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource( 1 )
 title = "txt_action_descend"
+hint = "txt_action_hint_descend"
 type = 2
