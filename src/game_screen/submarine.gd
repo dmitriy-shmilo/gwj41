@@ -5,7 +5,15 @@ export(float) var up_speed = 50.0
 export(float) var down_speed = 50.0
 export(Vector2) var direction = Vector2.ZERO
 
+var _current_button: ActionButton
+
 func _process(delta: float) -> void:
+	if not Input.is_action_pressed("interact"):
+		return
+	
+	if _current_button == null:
+		return
+		
 	if direction == Vector2.ZERO:
 		return
 
@@ -29,17 +37,17 @@ func go_steady() -> void:
 	direction = Vector2.ZERO
 
 
-func _on_Button1_pressed(sender) -> void:
-	ascend()
+func _on_Button_targeted(sender) -> void:
+	_current_button = sender
+	_current_button.toggle_hint(true)
+	
+	match sender.action.type:
+		ButtonAction.Type.ascend:
+			ascend()
+		ButtonAction.Type.descend:
+			descend()
 
 
-func _on_Button2_pressed(sender) -> void:
-	descend()
-
-
-func _on_Button3_pressed(sender) -> void:
-	pass # Replace with function body.
-
-
-func _on_Button_released(sender) -> void:
-	go_steady()
+func _on_Button_untargeted(sender) -> void:
+	_current_button.toggle_hint(false)
+	_current_button = null
