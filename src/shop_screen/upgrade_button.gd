@@ -25,7 +25,9 @@ func setup(upgrade: Upgrade) -> void:
 
 func refresh() -> void:
 	_checkmark_icon.visible = _upgrade.purchased
-	_button.disabled = _upgrade.price > UserSaveData.current_treasure or _upgrade.required_progress > UserSaveData.best_progress
+	_button.disabled = _upgrade.purchased or \
+		_upgrade.price > UserSaveData.current_treasure \
+		or _upgrade.required_progress > UserSaveData.best_progress
 
 
 func _purchase_upgrade() -> void:
