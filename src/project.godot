@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "ButtonAction",
+"language": "GDScript",
+"path": "res://data/actions/button_action.gd"
+}, {
 "base": "Node2D",
 "class": "Collectable",
 "language": "GDScript",
@@ -80,6 +85,7 @@ _global_script_classes=[ {
 "path": "res://data/upgrades/upgrade.gd"
 } ]
 _global_script_class_icons={
+"ButtonAction": "",
 "Collectable": "",
 "CreditsScene": "",
 "Enemy": "",
