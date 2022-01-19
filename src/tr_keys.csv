@@ -19,6 +19,7 @@ ui_credits,Credits,Благодарности
 ui_back_to_title,Back,Назад
 ui_quit,Quit,Выход
 ui_shop_title,"Upgrades","Улучшения"
+ui_new_run,"Descend Again","Погрузиться Снова"
 key_up,Up,Вверх
 key_down,Down,Вниз
 key_left,Left,Влево

@@ -16,6 +16,20 @@ func _ready() -> void:
 	_load()
 
 
+func purchasable_upgrades_available() -> bool:
+	var treasure = UserSaveData.current_treasure
+	var progress = UserSaveData.best_progress
+
+	for upgrade in UPGRADES:
+		if upgrade.purchased \
+			or upgrade.price > treasure \
+			or upgrade.required_progress > progress:
+				continue
+		return true
+	
+	return false
+
+
 func get_progress_milestones() -> Array:
 	var result = _milestone_map.keys().duplicate()
 	result.sort()

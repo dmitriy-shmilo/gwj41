@@ -21,7 +21,7 @@ margin_bottom = 114.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Expedition %d complete.[/center]"
-text = "[center]Expedition %d complete.[/center]"
+text = "Expedition %d complete."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,7 +32,7 @@ margin_right = 960.0
 margin_bottom = 196.0
 bbcode_enabled = true
 bbcode_text = "[center]  %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
-text = "[center]  %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
+text = "  %d "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -43,7 +43,7 @@ margin_right = 960.0
 margin_bottom = 230.0
 bbcode_enabled = true
 bbcode_text = "[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
-text = "[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
+text = "+ %d "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,7 +54,7 @@ margin_right = 960.0
 margin_bottom = 281.0
 bbcode_enabled = true
 bbcode_text = "[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
-text = "[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]"
+text = "+ %d "
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,18 +102,24 @@ margin_left = 252.0
 margin_top = -92.0
 margin_right = 398.0
 margin_bottom = -52.0
-text = "ui_shop"
+text = "ui_shop_title"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 386.0
-margin_top = -97.0
-margin_right = 402.0
-margin_bottom = -81.0
+[node name="NewUpgradesIndicator" type="TextureRect" parent="ShopButton"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -11.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 8, 8 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewUpgradesTween" type="Tween" parent="ShopButton"]
+repeat = true
+playback/repeat = true
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="NewRunButton" to="." method="_on_NewRunButton_pressed"]

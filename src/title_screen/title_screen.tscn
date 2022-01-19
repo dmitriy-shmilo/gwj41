@@ -49,17 +49,24 @@ margin_bottom = 348.0
 [node name="CreditsScene" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="CreditsText" parent="CreditsScene" index="1"]
-text = "[center]Thank you for playing[/center]"
-
 [node name="SettingsScene" parent="." instance=ExtResource( 5 )]
 visible = false
 
+[node name="VideoSettings" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer" index="1"]
+margin_top = 48.0
+
 [node name="Container" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer/VideoSettings" index="0"]
 margin_left = 362.0
-margin_top = 195.0
+margin_top = 189.0
 margin_right = 536.0
-margin_bottom = 267.0
+margin_bottom = 261.0
+
+[node name="KeyBindings" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer" index="2"]
+margin_top = 48.0
+
+[node name="GridContainer" parent="SettingsScene/VBoxContainer/PanelContainer/TabContainer/KeyBindings" index="0"]
+margin_top = 225.0
+margin_bottom = 225.0
 
 [node name="TutorialScene" parent="." instance=ExtResource( 4 )]
 visible = false
