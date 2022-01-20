@@ -14,6 +14,7 @@ onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
 onready var _submarine: Submarine = $"Submarine"
 onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
+onready var _screen_shaker: Shaker = $"ScreenShaker"
 
 var _max_lives = 1
 var _lives = 1
@@ -123,6 +124,7 @@ func _on_item_collected(item) -> void:
 			_invincibility_left = INVINCIBILITY_TIME
 			_set_lives(_lives - 1)
 			_submarine.start_blinking()
+			_screen_shaker.shake_vertical(self, "position", 25)
 		item.disappear()
 
 

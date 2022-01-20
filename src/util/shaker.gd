@@ -1,4 +1,5 @@
 extends Node
+class_name Shaker
 
 const DEFAULT_STEPS = 5
 const DEFAULT_DURATION = 0.5
