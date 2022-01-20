@@ -4,6 +4,7 @@ const METERS_PER_PIXEL = 0.02
 const SPAWN_OFFSET = 100
 const TREASURE_SCENE = preload("res://game_screen/treasure.tscn")
 const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
+const INVINCIBILITY_TIME = 2.0
 
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
@@ -17,6 +18,8 @@ var _oxygen_consumption = 1.0
 var _score = 0
 var _distance = 0
 var _speed = 50
+var _invincibility_left = 0.0
+
 
 func _ready() -> void:
 	_setup()
@@ -31,6 +34,14 @@ func _unhandled_input(event):
 	if event.is_action("system_pause"):
 		get_tree().paused = true
 		_pause_container.visible = true
+
+
+func _process(delta: float) -> void:
+	if _invincibility_left > 0.0:
+		_invincibility_left -= delta
+		
+		if _invincibility_left <= 0.0:
+			_submarine.stop_blinking()
 
 
 func _setup() -> void:
@@ -101,7 +112,10 @@ func _on_item_collected(item) -> void:
 		_set_score(_score + item.value)
 		item.disappear()
 	elif item is Enemy:
-		_set_lives(_lives - 1)
+		if _invincibility_left <= 0.0:
+			_invincibility_left = INVINCIBILITY_TIME
+			_set_lives(_lives - 1)
+			_submarine.start_blinking()
 		item.disappear()
 
 
