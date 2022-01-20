@@ -2,7 +2,11 @@ extends Node2D
 
 const METERS_PER_PIXEL = 0.02
 const SPAWN_OFFSET = 100
-const TREASURE_SCENE = preload("res://game_screen/treasure.tscn")
+const TREASURE_SCENES = [
+	preload("res://game_screen/treasure1.tscn"),
+	preload("res://game_screen/treasure2.tscn"),
+	preload("res://game_screen/treasure3.tscn")
+]
 const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
 const INVINCIBILITY_TIME = 2.0
 
@@ -25,7 +29,7 @@ func _ready() -> void:
 	_setup()
 	UserSaveData.is_running = true
 	UserSaveData.save_data()
-	_spawn(TREASURE_SCENE)
+	_spawn(TREASURE_SCENES[0])
 	_gui.update_lives(_lives, _max_lives)
 	_gui.show_run_title(tr("txt_run_title") % (UserSaveData.current_expedition + 1))
 
@@ -64,7 +68,7 @@ func _setup() -> void:
 
 func _spawn(scene) -> void:
 	var item = scene.instance() as Collectable
-	item.global_position = Vector2(get_viewport().size.x + SPAWN_OFFSET, randi() % 10 * get_viewport().size.y / 10 + 8)
+	item.global_position = Vector2(get_viewport().size.x + SPAWN_OFFSET, randi() % 8 * get_viewport().size.y / 10 + get_viewport().size.y / 10)
 	item.connect("collected", self, "_on_item_collected")
 	item.add_to_group("items", true)
 	item.velocity = Vector2(-_speed, 0)
@@ -134,9 +138,9 @@ func _on_ContinueButton_pressed():
 func _on_SpawnTimer_timeout() -> void:
 	# TODO: spawn more stuff with progress
 	match randi() % 10:
-		0:
-			_spawn(TREASURE_SCENE)
-		1:
+		0, 1:
+			_spawn(TREASURE_SCENES[randi() % TREASURE_SCENES.size()])
+		2:
 			_spawn(ENEMY_SCENE)
 
 
