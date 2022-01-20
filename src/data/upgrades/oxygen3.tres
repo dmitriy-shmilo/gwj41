@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-id = 4
+id = 6
 price = 250
 required_progress = 100
 strength = 120
