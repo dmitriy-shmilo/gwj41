@@ -13,6 +13,7 @@ const INVINCIBILITY_TIME = 2.0
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
 onready var _submarine: Submarine = $"Submarine"
+onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 
 var _max_lives = 1
 var _lives = 1
@@ -27,6 +28,7 @@ var _invincibility_left = 0.0
 
 func _ready() -> void:
 	_setup()
+	_soundtrack_player.play(UserSaveData.soundtrack_time)
 	UserSaveData.is_running = true
 	UserSaveData.save_data()
 	_spawn(TREASURE_SCENES[0])
@@ -107,6 +109,7 @@ func _end_run() -> void:
 	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
 	UserSaveData.is_running = false
+	UserSaveData.soundtrack_time = _soundtrack_player.get_playback_position()
 	UserSaveData.save_data()
 	get_tree().change_scene("res://score_screen/score_screen.tscn")
 

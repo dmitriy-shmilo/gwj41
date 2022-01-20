@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ocean_dive.ogg-540bc321b823ec1bb43d9a1b837c497b.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/ocean_dive.ogg"
+dest_files=[ "res://.import/ocean_dive.ogg-540bc321b823ec1bb43d9a1b837c497b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

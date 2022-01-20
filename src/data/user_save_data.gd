@@ -2,6 +2,7 @@ extends Node
 
 const SAVE_FILE = "user://save.json"
 
+var soundtrack_time = 0.0
 var current_expedition = 0
 var current_treasure = 0
 var last_recovered_treasure = 0

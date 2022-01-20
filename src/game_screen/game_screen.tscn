@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/art/ui.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/oxygen_icon.tres" type="Texture" id=8]
 [ext_resource path="res://assets/art/ocean.png" type="Texture" id=9]
+[ext_resource path="res://assets/sound/ocean_dive.ogg" type="AudioStream" id=10]
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 9 )
@@ -90,6 +91,7 @@ script = ExtResource( 1 )
 
 [node name="BackgroundWater" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
+frame = 12
 playing = true
 centered = false
 
@@ -262,6 +264,10 @@ autostart = true
 
 [node name="ProgressTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "Music"
 
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
