@@ -3,9 +3,6 @@ class_name ActionButton
 
 signal targeted(sender)
 signal untargeted(sender)
-signal pressed(sender)
-signal released(sender)
-
 
 export(Resource) var action
 

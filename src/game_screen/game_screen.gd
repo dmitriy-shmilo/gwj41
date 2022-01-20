@@ -49,13 +49,13 @@ func _setup() -> void:
 	
 	for upgrade in upgrades:
 		match upgrade.type:
-			Upgrade.UpgradeType.health:
+			Upgrade.Type.health:
 				_max_lives += upgrade.strength
-			Upgrade.UpgradeType.oxygen:
+			Upgrade.Type.oxygen:
 				_max_oxygen += upgrade.strength
-			Upgrade.UpgradeType.ascend_speed:
+			Upgrade.Type.ascend_speed:
 				_submarine.up_speed += upgrade.strength
-			Upgrade.UpgradeType.descend_speed:
+			Upgrade.Type.descend_speed:
 				_submarine.down_speed += upgrade.strength
 	
 	_lives = _max_lives
