@@ -8,8 +8,10 @@ onready var _sidebar_container = $"SideBarContainer"
 onready var _upgrade_name_label = $"SideBarContainer/VBoxContainer/UpgradeNameLabel"
 onready var _upgrade_price_label = $"SideBarContainer/VBoxContainer/UpgradePriceLabel"
 onready var _upgrade_description_label = $"SideBarContainer/VBoxContainer/UpgradeDescriptionLabel"
+onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 
 func _ready() -> void:
+	_soundtrack_player.seek(UserSaveData.menu_soundtrack_time)
 	_refresh()
 	
 	var milestones = UpgradeRegistry.get_progress_milestones()
@@ -55,6 +57,7 @@ func _refresh() -> void:
 
 
 func _on_NewRunButton_pressed() -> void:
+	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
 	UserSaveData.is_running = false
 	UserSaveData.save_data()
 	get_tree().change_scene("res://game_screen/game_screen.tscn")

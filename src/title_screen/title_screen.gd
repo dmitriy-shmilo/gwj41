@@ -1,6 +1,7 @@
 extends Control
 
-onready var _fader = $"Fader"
+onready var _fader: Fader = $"Fader"
+onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 onready var _title_scene: Control = $"TitleScene"
 onready var _credits_scene: Control = $"CreditsScene"
 onready var _settings_scene: Control = $"SettingsScene"
@@ -12,6 +13,8 @@ onready var _scenes = [
 
 var _transition_target: Control = null
 
+#func _ready() -> void:
+	
 func _on_QuitButton_pressed():
 	get_tree().quit()
 

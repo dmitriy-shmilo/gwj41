@@ -8,8 +8,10 @@ onready var _gained_treasure = $"ScoreContainer/GainedTreasure"
 onready var _total_treasure = $"ScoreContainer/TotalTreasure"
 onready var _new_upgrades_indicator = $"ShopButton/NewUpgradesIndicator"
 onready var _new_upgrades_tween = $"ShopButton/NewUpgradesTween"
+onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 
 func _ready() -> void:
+	_soundtrack_player.seek(UserSaveData.menu_soundtrack_time)
 	_score_label.bbcode_text = tr("txt_score_title") % UserSaveData.current_expedition
 	_current_treasure.bbcode_text = tr("txt_treasure_count") % UserSaveData.current_treasure
 	_gained_treasure.bbcode_text = tr("txt_treasure_count_plus") % UserSaveData.last_recovered_treasure
@@ -24,12 +26,15 @@ func _ready() -> void:
 
 
 func _on_QuitButton_pressed() -> void:
+	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
 	get_tree().change_scene("res://title_screen/title_screen.tscn")
 
 
 func _on_NewRunButton_pressed() -> void:
+	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
 	get_tree().change_scene("res://game_screen/game_screen.tscn")
 
 
 func _on_ShopButton_pressed() -> void:
+	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
 	get_tree().change_scene("res://shop_screen/shop_screen.tscn")

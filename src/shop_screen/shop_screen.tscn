@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/font_h1.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/font_h2.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/sound/ahoy_mate.ogg" type="AudioStream" id=4]
 [ext_resource path="res://ui/font_body.tres" type="DynamicFont" id=5]
 [ext_resource path="res://shop_screen/shop_screen.gd" type="Script" id=6]
 
@@ -47,7 +48,7 @@ autowrap = true
 [node name="UpgradePriceLabel" type="RichTextLabel" parent="SideBarContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 306.0
-margin_bottom = 100.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
@@ -57,9 +58,9 @@ fit_content_height = true
 scroll_active = false
 
 [node name="UpgradeDescriptionLabel" type="Label" parent="SideBarContainer/VBoxContainer"]
-margin_top = 104.0
+margin_top = 109.0
 margin_right = 306.0
-margin_bottom = 130.0
+margin_bottom = 135.0
 size_flags_vertical = 1
 text = "(click to buy)"
 align = 2
@@ -120,5 +121,9 @@ text = "ui_new_run"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 
 [connection signal="pressed" from="NewRunButton" to="." method="_on_NewRunButton_pressed"]
