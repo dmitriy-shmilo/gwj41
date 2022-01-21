@@ -3,9 +3,9 @@ class_name ScoreScreen
 
 
 onready var _score_label = $"ScoreLabel"
-onready var _current_treasure = $"CurrentTreasure"
-onready var _gained_treasure = $"GainedTreasure"
-onready var _total_treasure = $"TotalTreasure"
+onready var _current_treasure = $"ScoreContainer/CurrentTreasure"
+onready var _gained_treasure = $"ScoreContainer/GainedTreasure"
+onready var _total_treasure = $"ScoreContainer/TotalTreasure"
 onready var _new_upgrades_indicator = $"ShopButton/NewUpgradesIndicator"
 onready var _new_upgrades_tween = $"ShopButton/NewUpgradesTween"
 

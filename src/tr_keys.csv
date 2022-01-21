@@ -28,8 +28,8 @@ key_system_pause,Pause,Пауза
 txt_credits,"Thank you for playing","Спасибо за то что играли"
 txt_tutorial,"How to play","Как играть"
 txt_score_title,"[center]Expedition #%d complete![/center]","[center]Экспедиция №%d завершена![/center]"
-txt_treasure_count,"[center]  %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
-txt_treasure_count_plus,"[center]+ %d [img]res://assets/art/treasure_icon.tres[/img][/center]",
+txt_treasure_count,"[right]  %d [img]res://assets/art/treasure_icon.tres[/img][/right]",
+txt_treasure_count_plus,"[right]+ %d [img]res://assets/art/treasure_icon.tres[/img][/right]",
 txt_treasure_count_right,"[right]  %d [img]res://assets/art/treasure_icon.tres[/img][/right]",
 txt_up_purchased,"[right]Purchased[/right]","[right]Куплено[/right]"
 txt_run_title,"Expedition #%d has begun!","Экспедиция №%d началась!"
