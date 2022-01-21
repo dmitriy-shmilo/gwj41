@@ -9,6 +9,7 @@ onready var _treasure_label: Label = $"TreasureLabel"
 onready var _lives_container: HBoxContainer = $"LivesContainer"
 onready var _run_title_label: Label = $"RunTitleLabel"
 onready var _run_title_tween: Tween = $"RunTitleTween"
+onready var _powerup_label: Label = $"PowerupLabel"
 
 func show_run_title(text: String) -> void:
 	var height = _run_title_label.rect_size.y
@@ -69,3 +70,11 @@ func update_distance(distance: float) -> void:
 func update_oxygen(current: float, total: float) -> void:
 	_oxygen_progress.max_value = total
 	_oxygen_progress.value = current
+
+
+func update_powerup(powerup: Powerup) -> void:
+	if powerup == null:
+		_powerup_label.text = ""
+		return
+	
+	_powerup_label.text = tr(powerup.title)

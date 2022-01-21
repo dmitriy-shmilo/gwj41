@@ -8,6 +8,7 @@ const TREASURE_SCENES = [
 	preload("res://game_screen/treasure3.tscn")
 ]
 const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
+const POWERUP_SCENE = preload("res://game_screen/powerup.tscn")
 const INVINCIBILITY_TIME = 2.0
 
 onready var _pause_container: ColorRect = $"Gui/PauseContainer"
@@ -28,6 +29,7 @@ var _score = 0
 var _distance = 0
 var _speed = 50
 var _invincibility_left = 0.0
+var _current_powerup: Powerup = null
 
 
 func _ready() -> void:
@@ -87,6 +89,11 @@ func _set_score(value: int) -> void:
 	_gui.update_score(_score)
 
 
+func _set_powerup(value: Powerup) -> void:
+	_current_powerup = value
+	_gui.update_powerup(value)
+
+
 func _set_lives(value: int) -> void:
 	# TODO: update stats and fade
 	if value < 1:
@@ -124,6 +131,10 @@ func _on_item_collected(item) -> void:
 		_pickup_sound_player.play()
 		_set_score(_score + item.value)
 		item.disappear()
+	elif item is PowerupCollectable:
+		_pickup_sound_player.play()
+		_set_powerup(item.powerup)
+		item.disappear()
 	elif item is Enemy:
 		if _invincibility_left <= 0.0:
 			_damage_sound_player.play()
@@ -149,8 +160,10 @@ func _on_ContinueButton_pressed():
 func _on_SpawnTimer_timeout() -> void:
 	# TODO: spawn more stuff with progress
 	match randi() % 10:
-		0, 1:
+		0:
 			_spawn(TREASURE_SCENES[randi() % TREASURE_SCENES.size()])
+		1:
+			_spawn(POWERUP_SCENE)
 		2:
 			_spawn(ENEMY_SCENE)
 

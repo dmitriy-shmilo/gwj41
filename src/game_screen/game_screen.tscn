@@ -254,6 +254,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PowerupLabel" type="Label" parent="Gui"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 112.0
+margin_bottom = 51.0
+theme = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "powerup"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Submarine" parent="." instance=ExtResource( 3 )]
 position = Vector2( 145, 287 )
 
