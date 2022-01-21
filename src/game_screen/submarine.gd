@@ -37,12 +37,10 @@ func _process(delta: float) -> void:
 
 
 func start_blinking() -> void:
-	_effect_player.play("blink")
 	_effect_sound_player.play()
 
 
 func stop_blinking() -> void:
-	_effect_player.play("RESET")
 	_effect_sound_player.stop()
 
 

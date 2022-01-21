@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://util/shaker.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/art/background.png" type="Texture" id=12]
 [ext_resource path="res://assets/art/ocean.png" type="Texture" id=13]
+[ext_resource path="res://assets/sound/sfx_sub_damaged.wav" type="AudioStream" id=14]
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
@@ -104,7 +105,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 1
+frame = 6
 playing = true
 centered = false
 
@@ -295,7 +296,7 @@ bus = "Music"
 stream = ExtResource( 4 )
 
 [node name="DamageSoundPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 14 )
 
 [node name="EndSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
