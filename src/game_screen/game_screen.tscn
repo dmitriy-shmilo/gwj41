@@ -1,13 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://game_screen/submarine.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/art/treasure_icon.tres" type="Texture" id=4]
 [ext_resource path="res://game_screen/gui.gd" type="Script" id=5]
 [ext_resource path="res://ui/font_h1.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/art/ui.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/oxygen_icon.tres" type="Texture" id=8]
 [ext_resource path="res://assets/art/ocean.png" type="Texture" id=9]
 [ext_resource path="res://assets/sound/ocean_dive.ogg" type="AudioStream" id=10]
 [ext_resource path="res://util/shaker.tscn" type="PackedScene" id=11]
@@ -77,13 +75,17 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 7 )
-region = Rect2( 480, 0, 16, 16 )
+region = Rect2( 448, 208, 64, 48 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 464, 48, 48, 160 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 7 )
-region = Rect2( 496, 0, 16, 16 )
+region = Rect2( 368, 80, 48, 16 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 957.241, 10 )
@@ -99,7 +101,7 @@ centered = false
 
 [node name="BackgroundWater" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 7
+frame = 2
 playing = true
 centered = false
 
@@ -183,11 +185,9 @@ margin_right = 380.0
 margin_bottom = 40.0
 text = "ui_continue"
 
-[node name="TreasureIcon" type="Sprite" parent="Gui"]
-position = Vector2( 869, 33 )
-texture = ExtResource( 4 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 16, 16 )
+[node name="Piggybank" type="Sprite" parent="Gui"]
+position = Vector2( 846, 31 )
+texture = SubResource( 20 )
 
 [node name="TreasureLabel" type="Label" parent="Gui"]
 anchor_left = 1.0
@@ -197,6 +197,7 @@ margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 42.0
 theme = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "x000"
 align = 2
 __meta__ = {
@@ -206,26 +207,33 @@ __meta__ = {
 [node name="LivesContainer" type="HBoxContainer" parent="Gui"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -121.0
-margin_top = 50.0
-margin_right = -16.0
-margin_bottom = 66.0
+margin_left = -270.0
+margin_top = 15.0
+margin_right = -165.0
+margin_bottom = 47.0
 custom_constants/separation = 0
 alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OxygenProgress" type="TextureProgress" parent="Gui"]
+[node name="OxygenBackground" type="TextureRect" parent="Gui"]
+margin_left = 898.0
+margin_top = 64.0
+margin_right = 946.0
+margin_bottom = 224.0
+texture = SubResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OxygenProgress" type="TextureProgress" parent="Gui/OxygenBackground"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -48.0
-margin_top = 89.0
-margin_right = -16.0
-margin_bottom = 209.0
-max_value = 1.0
-value = 1.0
-texture_under = SubResource( 2 )
+margin_top = 33.0
+margin_bottom = 147.0
+value = 100.0
 texture_progress = SubResource( 3 )
 fill_mode = 3
 nine_patch_stretch = true
@@ -237,10 +245,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OxygenIcon" type="Sprite" parent="Gui"]
-position = Vector2( 899, 199 )
-texture = ExtResource( 8 )
-
 [node name="Submarine" parent="." instance=ExtResource( 3 )]
 position = Vector2( 145, 287 )
 
@@ -249,7 +253,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 574, 34 )
+position = Vector2( 554, 35 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]

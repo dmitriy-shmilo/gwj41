@@ -4,7 +4,7 @@ class_name Gui
 const LIFE_ICON_SCENE = preload("res://game_screen/life_icon.tscn")
 
 onready var _distance_label: Label = $"DistanceLabel"
-onready var _oxygen_progress: TextureProgress = $"OxygenProgress"
+onready var _oxygen_progress: TextureProgress = $"OxygenBackground/OxygenProgress"
 onready var _treasure_label: Label = $"TreasureLabel"
 onready var _lives_container: HBoxContainer = $"LivesContainer"
 onready var _run_title_label: Label = $"RunTitleLabel"
