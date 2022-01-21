@@ -14,6 +14,9 @@ onready var _pause_container: ColorRect = $"Gui/PauseContainer"
 onready var _gui: Gui = $"Gui"
 onready var _submarine: Submarine = $"Submarine"
 onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
+onready var _pickup_sound_player: AudioStreamPlayer = $"PickupSoundPlayer"
+onready var _damage_sound_player: AudioStreamPlayer = $"DamageSoundPlayer"
+onready var _end_sound_player: AudioStreamPlayer = $"EndSoundPlayer"
 onready var _screen_shaker: Shaker = $"ScreenShaker"
 
 var _max_lives = 1
@@ -107,6 +110,7 @@ func _set_distance(value: float) -> void:
 
 
 func _end_run() -> void:
+	_end_sound_player.play()
 	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
 	UserSaveData.is_running = false
@@ -117,10 +121,12 @@ func _end_run() -> void:
 
 func _on_item_collected(item) -> void:
 	if item is Treasure:
+		_pickup_sound_player.play()
 		_set_score(_score + item.value)
 		item.disappear()
 	elif item is Enemy:
 		if _invincibility_left <= 0.0:
+			_damage_sound_player.play()
 			_invincibility_left = INVINCIBILITY_TIME
 			_set_lives(_lives - 1)
 			_submarine.start_blinking()

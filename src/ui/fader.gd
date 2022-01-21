@@ -20,7 +20,8 @@ var _in_color: Color
 var _audio_player: AudioStreamPlayer
 
 func _ready() -> void:
-	_audio_player = get_node(audio_player)
+	if audio_player != "":
+		_audio_player = get_node(audio_player)
 	_fade.visible = true
 	_out_color = _fade.modulate
 	_in_color = Color(_out_color.r, _out_color.g, _out_color.b, 0)

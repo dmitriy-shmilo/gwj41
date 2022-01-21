@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://game_screen/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://data/actions/descend.tres" type="Resource" id=6]
 [ext_resource path="res://data/actions/special.tres" type="Resource" id=7]
 [ext_resource path="res://data/actions/ascend.tres" type="Resource" id=8]
+[ext_resource path="res://assets/sound/sfx_sub_damaged.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 31.9999
@@ -111,6 +112,13 @@ tile_data = PoolIntArray( -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0
 [node name="EffectPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/blink = SubResource( 5 )
+
+[node name="MovementSoundPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Sfx"
+
+[node name="EffectSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Sfx"
 
 [connection signal="targeted" from="AscendButton" to="." method="_on_Button_targeted"]
 [connection signal="untargeted" from="AscendButton" to="." method="_on_Button_untargeted"]
