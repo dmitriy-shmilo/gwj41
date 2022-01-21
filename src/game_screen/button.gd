@@ -11,8 +11,6 @@ onready var _hint_label = $"HintLabel"
 
 func _ready() -> void:
 	var key = InputMap.get_action_list("interact")[0].as_text()
-	print(action.hint)
-	print(tr(action.hint))
 	_hint_label.text = tr(action.hint) % key
 
 
