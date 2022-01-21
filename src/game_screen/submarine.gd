@@ -7,7 +7,6 @@ export(Vector2) var direction = Vector2.ZERO
 
 onready var _effect_player: AnimationPlayer = $"EffectPlayer"
 onready var _movement_sound_player: AudioStreamPlayer = $"MovementSoundPlayer"
-onready var _effect_sound_player: AudioStreamPlayer = $"EffectSoundPlayer"
 
 var _current_button: ActionButton
 
@@ -37,11 +36,11 @@ func _process(delta: float) -> void:
 
 
 func start_blinking() -> void:
-	_effect_sound_player.play()
+	_effect_player.play("blink")
 
 
 func stop_blinking() -> void:
-	_effect_sound_player.stop()
+	_effect_player.play("RESET")
 
 
 func ascend() -> void:
