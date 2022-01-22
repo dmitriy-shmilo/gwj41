@@ -1,10 +1,12 @@
 extends KinematicBody2D
 class_name Submarine
 
+const BASE_SPEED = 50.0
+
 signal special_pressed(sender)
 
-export(float) var base_up_speed = 50.0
-export(float) var base_down_speed = 50.0
+export(float) var base_up_speed = BASE_SPEED
+export(float) var base_down_speed = BASE_SPEED
 export(Vector2) var direction = Vector2.ZERO
 
 onready var _effect_player: AnimationPlayer = $"EffectPlayer"
@@ -15,6 +17,14 @@ var _current_button: ActionButton
 var _up_speed = base_up_speed
 var _down_speed = base_down_speed
 var _is_emerging = false
+
+
+func _ready() -> void:
+	for upgrade in UpgradeRegistry.get_purchased_upgrades():
+		if upgrade.type == Upgrade.Type.vspeed:
+			base_up_speed += upgrade.strength
+			base_down_speed += upgrade.strength
+
 
 func _process(delta: float) -> void:
 	if _is_emerging:
@@ -50,7 +60,7 @@ func _process(delta: float) -> void:
 
 
 func emerge() -> void:
-	modify_vspeed(25.0)
+	_up_speed = BASE_SPEED * 2.0
 	_body_shape.set_deferred("disabled", true)
 	_is_emerging = true
 

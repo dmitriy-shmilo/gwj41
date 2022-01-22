@@ -32,7 +32,7 @@ func _purchase_upgrade() -> void:
 
 	if UserSaveData.current_treasure >= _upgrade.price:
 		_upgrade.purchased = true
-		UserSaveData.unlocked_upgrades.append(_upgrade.id)
+		UserSaveData.unlocked_upgrades.append(float(_upgrade.id))
 		UserSaveData.current_treasure -= _upgrade.price
 		emit_signal("purchased", self, _upgrade)
 		refresh()

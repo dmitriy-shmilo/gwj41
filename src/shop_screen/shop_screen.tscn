@@ -42,28 +42,24 @@ margin_right = 306.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 size_flags_vertical = 1
-text = "Upgrade Name"
 align = 2
 autowrap = true
 
 [node name="UpgradePriceLabel" type="RichTextLabel" parent="SideBarContainer/VBoxContainer"]
 margin_top = 68.0
 margin_right = 306.0
-margin_bottom = 105.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
-bbcode_text = "[right]  %d [img]res://assets/art/treasure_icon.tres[/img][/right]"
-text = "  %d "
 fit_content_height = true
 scroll_active = false
 
 [node name="UpgradeDescriptionLabel" type="Label" parent="SideBarContainer/VBoxContainer"]
-margin_top = 109.0
+margin_top = 104.0
 margin_right = 306.0
-margin_bottom = 135.0
+margin_bottom = 130.0
 size_flags_vertical = 1
-text = "(click to buy)"
 align = 2
 autowrap = true
 
