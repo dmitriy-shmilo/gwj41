@@ -9,6 +9,7 @@ onready var _upgrade_name_label = $"SideBarContainer/VBoxContainer/UpgradeNameLa
 onready var _upgrade_price_label = $"SideBarContainer/VBoxContainer/UpgradePriceLabel"
 onready var _upgrade_description_label = $"SideBarContainer/VBoxContainer/UpgradeDescriptionLabel"
 onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
+onready var _fader: Fader = $"Fader"
 
 func _ready() -> void:
 	_soundtrack_player.seek(UserSaveData.menu_soundtrack_time)
@@ -57,7 +58,9 @@ func _refresh() -> void:
 
 
 func _on_NewRunButton_pressed() -> void:
+	_fader.fade_out()
 	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
 	UserSaveData.is_running = false
+	yield(_fader, "fade_out_completed")
 	UserSaveData.save_data()
 	get_tree().change_scene("res://game_screen/game_screen.tscn")

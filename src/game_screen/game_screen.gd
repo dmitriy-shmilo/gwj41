@@ -21,6 +21,7 @@ onready var _end_sound_player: AudioStreamPlayer = $"EndSoundPlayer"
 onready var _powerup_sound_player: AudioStreamPlayer = $"PowerupSoundPlayer"
 onready var _screen_shaker: Shaker = $"ScreenShaker"
 onready var _speed_powerup_timer: Timer = $"SpeedPowerupTimer"
+onready var _fader: Fader = $"Fader"
 
 var _max_lives = 1
 var _lives = 1
@@ -126,12 +127,14 @@ func _set_distance(value: float) -> void:
 
 
 func _end_run() -> void:
+	_fader.fade_out()
 	_end_sound_player.play()
 	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
 	UserSaveData.is_running = false
 	UserSaveData.soundtrack_time = _soundtrack_player.get_playback_position()
 	UserSaveData.save_data()
+	yield(_fader, "fade_out_completed")
 	get_tree().change_scene("res://score_screen/score_screen.tscn")
 
 

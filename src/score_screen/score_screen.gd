@@ -9,6 +9,7 @@ onready var _total_treasure = $"ScoreContainer/TotalTreasure"
 onready var _new_upgrades_indicator = $"ShopButton/NewUpgradesIndicator"
 onready var _new_upgrades_tween = $"ShopButton/NewUpgradesTween"
 onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
+onready var _fader: Fader = $"Fader"
 
 func _ready() -> void:
 	_soundtrack_player.seek(UserSaveData.menu_soundtrack_time)
@@ -26,15 +27,21 @@ func _ready() -> void:
 
 
 func _on_QuitButton_pressed() -> void:
+	_fader.fade_out()
 	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
+	yield(_fader, "fade_out_completed")
 	get_tree().change_scene("res://title_screen/title_screen.tscn")
 
 
 func _on_NewRunButton_pressed() -> void:
+	_fader.fade_out()
 	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
+	yield(_fader, "fade_out_completed")
 	get_tree().change_scene("res://game_screen/game_screen.tscn")
 
 
 func _on_ShopButton_pressed() -> void:
+	_fader.fade_out()
 	UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
+	yield(_fader, "fade_out_completed")
 	get_tree().change_scene("res://shop_screen/shop_screen.tscn")

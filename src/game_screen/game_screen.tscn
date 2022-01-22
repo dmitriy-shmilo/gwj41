@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/art/ocean.png" type="Texture" id=13]
 [ext_resource path="res://assets/sound/sfx_sub_damaged.wav" type="AudioStream" id=14]
 [ext_resource path="res://assets/sound/sfx_sub_powerup.wav" type="AudioStream" id=15]
+[ext_resource path="res://ui/fader.tscn" type="PackedScene" id=16]
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
@@ -106,7 +107,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 2
+frame = 4
 playing = true
 centered = false
 
@@ -304,21 +305,28 @@ one_shot = true
 
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -80.0
 bus = "Music"
 
 [node name="PickupSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "Sfx"
 
 [node name="DamageSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+bus = "Sfx"
 
 [node name="EndSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+bus = "Sfx"
 
 [node name="PowerupSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+bus = "Sfx"
 
 [node name="ScreenShaker" parent="." instance=ExtResource( 11 )]
+
+[node name="Fader" parent="." instance=ExtResource( 16 )]
 
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

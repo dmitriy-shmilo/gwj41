@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/font_h1.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/art/new_upgrade_icon.tres" type="Texture" id=3]
 [ext_resource path="res://score_screen/score_screen.gd" type="Script" id=4]
 [ext_resource path="res://assets/sound/ahoy_mate.ogg" type="AudioStream" id=5]
+[ext_resource path="res://ui/fader.tscn" type="PackedScene" id=6]
 
 [node name="ScoreScreen" type="Control"]
 anchor_right = 1.0
@@ -140,8 +141,11 @@ __meta__ = {
 
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -80.0
 autoplay = true
 bus = "Music"
+
+[node name="Fader" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="NewRunButton" to="." method="_on_NewRunButton_pressed"]

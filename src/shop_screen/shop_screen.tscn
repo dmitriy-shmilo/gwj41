@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/font_h1.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/sound/ahoy_mate.ogg" type="AudioStream" id=4]
 [ext_resource path="res://ui/font_body.tres" type="DynamicFont" id=5]
 [ext_resource path="res://shop_screen/shop_screen.gd" type="Script" id=6]
+[ext_resource path="res://ui/fader.tscn" type="PackedScene" id=7]
 
 [node name="Shop" type="Control"]
 anchor_right = 1.0
@@ -125,5 +126,8 @@ __meta__ = {
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+bus = "Music"
+
+[node name="Fader" parent="." instance=ExtResource( 7 )]
 
 [connection signal="pressed" from="NewRunButton" to="." method="_on_NewRunButton_pressed"]
