@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/art/background.png" type="Texture" id=12]
 [ext_resource path="res://assets/art/ocean.png" type="Texture" id=13]
 [ext_resource path="res://assets/sound/sfx_sub_damaged.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound/sfx_sub_powerup.wav" type="AudioStream" id=15]
 
 [sub_resource type="AtlasTexture" id=21]
 atlas = ExtResource( 9 )
@@ -105,7 +106,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 6
+frame = 2
 playing = true
 centered = false
 
@@ -261,7 +262,6 @@ margin_right = 112.0
 margin_bottom = 51.0
 theme = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "powerup"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -298,11 +298,13 @@ autostart = true
 [node name="ProgressTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="SpeedPowerupTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 bus = "Music"
-
-[node name="ScreenShaker" parent="." instance=ExtResource( 11 )]
 
 [node name="PickupSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -313,7 +315,14 @@ stream = ExtResource( 14 )
 [node name="EndSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 
+[node name="PowerupSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="ScreenShaker" parent="." instance=ExtResource( 11 )]
+
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="special_pressed" from="Submarine" to="." method="_on_Submarine_special_pressed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="ProgressTimer" to="." method="_on_ProgressTimer_timeout"]
+[connection signal="timeout" from="SpeedPowerupTimer" to="." method="_on_SpeedPowerupTimer_timeout"]

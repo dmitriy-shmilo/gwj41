@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 type = 4
 title = "txt_power_vspeed_up"
-strength = 25.0
+strength = 50.0

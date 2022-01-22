@@ -18,7 +18,9 @@ onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 onready var _pickup_sound_player: AudioStreamPlayer = $"PickupSoundPlayer"
 onready var _damage_sound_player: AudioStreamPlayer = $"DamageSoundPlayer"
 onready var _end_sound_player: AudioStreamPlayer = $"EndSoundPlayer"
+onready var _powerup_sound_player: AudioStreamPlayer = $"PowerupSoundPlayer"
 onready var _screen_shaker: Shaker = $"ScreenShaker"
+onready var _speed_powerup_timer: Timer = $"SpeedPowerupTimer"
 
 var _max_lives = 1
 var _lives = 1
@@ -27,7 +29,8 @@ var _oxygen = 60
 var _oxygen_consumption = 1.0
 var _score = 0
 var _distance = 0
-var _speed = 50
+var _base_speed = 50.0
+var _speed = _base_speed
 var _invincibility_left = 0.0
 var _current_powerup: Powerup = null
 
@@ -81,6 +84,12 @@ func _spawn(scene) -> void:
 	item.add_to_group("items", true)
 	item.velocity = Vector2(-_speed, 0)
 	add_child(item)
+
+
+func _set_speed(value: float) -> void:
+	_speed = value
+	for item in get_tree().get_nodes_in_group("items"):
+		(item as Collectable).velocity = Vector2(-_speed, 0)
 
 
 func _set_score(value: int) -> void:
@@ -172,3 +181,27 @@ func _on_ProgressTimer_timeout() -> void:
 	_set_distance(_distance + _speed * METERS_PER_PIXEL)
 	_set_oxygen(_oxygen - _oxygen_consumption)
 	
+
+func _on_Submarine_special_pressed(sender) -> void:
+	if _current_powerup == null:
+		return
+	
+	_powerup_sound_player.play()
+	match _current_powerup.type:
+		Powerup.Type.health:
+			_set_lives(min(_lives + _current_powerup.strength, _max_lives))
+		Powerup.Type.oxygen:
+			_set_oxygen(min(_oxygen + _current_powerup.strength, _max_oxygen))
+		Powerup.Type.hspeed:
+			_set_speed(_base_speed + _current_powerup.strength)
+			_speed_powerup_timer.start()
+		Powerup.Type.vspeed:
+			_submarine.modify_vspeed(_current_powerup.strength)
+			_speed_powerup_timer.start()
+	
+	_set_powerup(null)
+
+
+func _on_SpeedPowerupTimer_timeout() -> void:
+	_set_speed(_base_speed)
+	_submarine.modify_vspeed(0.0)

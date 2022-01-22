@@ -1,14 +1,18 @@
 extends KinematicBody2D
 class_name Submarine
 
-export(float) var up_speed = 50.0
-export(float) var down_speed = 50.0
+signal special_pressed(sender)
+
+export(float) var base_up_speed = 50.0
+export(float) var base_down_speed = 50.0
 export(Vector2) var direction = Vector2.ZERO
 
 onready var _effect_player: AnimationPlayer = $"EffectPlayer"
 onready var _movement_sound_player: AudioStreamPlayer = $"MovementSoundPlayer"
 
 var _current_button: ActionButton
+var _up_speed = base_up_speed
+var _down_speed = base_down_speed
 
 func _process(delta: float) -> void:
 	if not Input.is_action_pressed("interact"):
@@ -17,7 +21,11 @@ func _process(delta: float) -> void:
 	
 	if _current_button == null:
 		return
-		
+	
+	if _current_button.action.type == ButtonAction.Type.special:
+		emit_signal("special_pressed", self)
+		return
+
 	if direction == Vector2.ZERO:
 		return
 
@@ -25,14 +33,19 @@ func _process(delta: float) -> void:
 		if not _movement_sound_player.playing:
 			_movement_sound_player.stream = preload("res://assets/sound/sfx_sub_ascend.wav")
 			_movement_sound_player.play()
-		move_and_slide(direction * up_speed)
+		move_and_slide(direction * _up_speed)
 		return
 	
 	if direction == Vector2.DOWN:
 		if not _movement_sound_player.playing:
 			_movement_sound_player.stream = preload("res://assets/sound/sfx_sub_descend.wav")
 			_movement_sound_player.play()
-		move_and_slide(direction * down_speed)
+		move_and_slide(direction * _down_speed)
+
+
+func modify_vspeed(modifier: float) -> void:
+	_down_speed = base_down_speed + modifier
+	_up_speed = base_up_speed + modifier
 
 
 func start_blinking() -> void:
