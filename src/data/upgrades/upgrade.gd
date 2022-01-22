@@ -5,8 +5,7 @@ enum Type {
 	unknown = 0
 	health = 1,
 	oxygen = 2,
-	ascend_speed = 3,
-	descend_speed = 4
+	vspeed = 3
 }
 
 export(int) var id = -1

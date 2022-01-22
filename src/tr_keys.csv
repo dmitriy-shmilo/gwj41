@@ -52,15 +52,23 @@ txt_power_vspeed_up,"+ maneuverability","+ маневренность"
 txt_power_oxygen_up,"+30sec oxygen","+30сек кислорода"
 txt_no_lives,"Critical damage! Resurface!","Повреждения критические! Всплываем!"
 txt_no_oxygen,"Out of oxygen! Resurface!","Кончается кислород! Всплываем!"
-txt_up_health1,"Hull Upgrade I",
-txt_up_health2,"Hull Upgrade II",
-txt_up_health3,"Hull Upgrade III",
-txt_up_health1_d,"Slightly increase submarine durability.\n+1 hit point",
-txt_up_health2_d,"Further increase submarine durability.\n+1 hit point",
-txt_up_health3_d,"Maximize submarine durability.\n+1 hit point",
-txt_up_oxygen1,"Oxygen Upgrade I",
-txt_up_oxygen2,"Oxygen Upgrade II",
-txt_up_oxygen3,"Oxygen Upgrade III",
-txt_up_oxygen1_d,"Take a deep breath before submersion.\n+30 seconds of oxygen.",
-txt_up_oxygen2_d,"Extra can of compressed air.\n+60 seconds of oxygen.",
-txt_up_oxygen3_d,"Maintain steady breath rate.\n+120 seconds of oxygen.",
+txt_up_health1,"Hull Upgrade I","Корпус I"
+txt_up_health2,"Hull Upgrade II","Корпус II"
+txt_up_health3,"Hull Upgrade III","Корпус III"
+txt_up_health1_d,"Tighten all bolts before submersion.\n+1 hit point.","Затянем все болты перед погружением.\n+1 очко здоровья"
+txt_up_health2_d,"Replace all rusty metal plates.\n+1 hit point.","Заменяем все ржавые листы металла.\n+1 очко здоровья."
+txt_up_health3_d,"Hide a four-leaf clover somewhere in there.\n+1 hit point.","Спрячу-ка я четырехлистный клевер где-то на борту.\n+1 очко здоровья."
+txt_up_oxygen1,"Oxygen Upgrade I","Кислород I"
+txt_up_oxygen2,"Oxygen Upgrade II","Кислород II"
+txt_up_oxygen3,"Oxygen Upgrade III","Кислород III"
+txt_up_oxygen1_d,"Take a deep breath before submersion.\n+60 seconds of oxygen.","Глубоко вдохнуть перед погружением.\n+60 сек кислорода."
+txt_up_oxygen2_d,"Extra can of compressed air.\n+60 seconds of oxygen.","Дополнительная канистра с кислородом.\n+60 сек кислорода."
+txt_up_oxygen3_d,"Get some potted plants.\n+120 seconds of oxygen.","Поставим пару цветков в горшочках.\n+120 сек кислорода."
+txt_up_vspeed1,"Maneuverability Upgrade I","Маневренность I"
+txt_up_vspeed2,"Maneuverability Upgrade II","Маневренность II"
+txt_up_vspeed3,"Maneuverability Upgrade III","Маневренность III"
+txt_up_vspeed1_d,"Press the button a bit harder.\n+20% maneuverability.","Буду жать на кнопки чуть сильнее.\n+20% маневренность."
+txt_up_vspeed2_d,"Perform regular engine maintenance.\n+20% maneuverability.","Регулярный техосмотр перед погружением.\n+20% маневренность."
+txt_up_vspeed3_d,"Better fuel.\n+10% maneuverability.","Заправлять топливо получше.\n+10% маневренность."
+txt_up_finish,"The Best Upgrade","Самое главное улучшение"
+txt_up_finish_d,"You really-really want this.","Вы очень-очень его хотите."

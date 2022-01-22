@@ -5,16 +5,16 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 448, 384, 64, 64 )
+region = Rect2( 448, 448, 64, 64 )
 
 [resource]
 script = ExtResource( 1 )
-id = 3
-price = 100
-required_progress = 300
-strength = 1
-type = 1
-title = "txt_up_health3"
-description = "txt_up_health3_d"
+id = 10
+price = 1000
+required_progress = 600
+strength = 120
+type = 0
+title = "txt_up_finish"
+description = "txt_up_finish_d"
 icon = SubResource( 1 )
 purchased = false

@@ -12,11 +12,6 @@ func _ready() -> void:
 	refresh()
 
 
-func _unhandled_key_input(event: InputEventKey) -> void:
-	if event.is_action("ui_accept"):
-		_purchase_upgrade()
-
-
 func setup(upgrade: Upgrade) -> void:
 	_upgrade = upgrade
 	if is_inside_tree():
@@ -24,6 +19,7 @@ func setup(upgrade: Upgrade) -> void:
 
 
 func refresh() -> void:
+	_button.icon = _upgrade.icon
 	_checkmark_icon.visible = _upgrade.purchased
 	_button.disabled = _upgrade.purchased or \
 		_upgrade.price > UserSaveData.current_treasure \

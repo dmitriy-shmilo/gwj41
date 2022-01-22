@@ -1,6 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://data/upgrades/upgrade.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/ui.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 256, 64, 64 )
 
 [resource]
 script = ExtResource( 1 )
@@ -11,4 +16,5 @@ strength = 1
 type = 1
 title = "txt_up_health1"
 description = "txt_up_health1_d"
+icon = SubResource( 1 )
 purchased = false

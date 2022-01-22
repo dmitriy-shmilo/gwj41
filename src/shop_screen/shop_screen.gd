@@ -12,6 +12,7 @@ onready var _soundtrack_player: AudioStreamPlayer = $"SoundtrackPlayer"
 onready var _fader: Fader = $"Fader"
 
 func _ready() -> void:
+	$NewRunButton.grab_focus()
 	_soundtrack_player.seek(UserSaveData.menu_soundtrack_time)
 	_refresh()
 	

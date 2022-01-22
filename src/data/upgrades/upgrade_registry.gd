@@ -7,7 +7,11 @@ const UPGRADES = [
 	preload("res://data/upgrades/health3.tres"),
 	preload("res://data/upgrades/oxygen1.tres"),
 	preload("res://data/upgrades/oxygen2.tres"),
-	preload("res://data/upgrades/oxygen3.tres")
+	preload("res://data/upgrades/oxygen3.tres"),
+	preload("res://data/upgrades/speed1.tres"),
+	preload("res://data/upgrades/speed2.tres"),
+	preload("res://data/upgrades/speed3.tres"),
+	preload("res://data/upgrades/finish.tres")
 ]
 
 var _milestone_map = {}
