@@ -1,6 +1,6 @@
 extends Node
 
-const CONFIGURABLE_KEYS = ["up", "down", "left", "right", "system_pause"]
+const CONFIGURABLE_KEYS = ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept", "system_pause"]
 const MAX_VOLUME_DB = 2.0
 const MIN_VOLUME_DB = -40.0
 const MAX_VOLUME = 100.0
@@ -15,6 +15,7 @@ var speech_volume:float = DEFAULT_VOLUME setget set_speech_volume
 
 var fullscreen: bool = false setget set_fullscreen
 var particles: bool = true
+var screenshake: bool = true
 
 var _master_bus_idx = -1
 var _sfx_bus_idx = -1
@@ -113,9 +114,10 @@ func _get_data() -> Dictionary:
 			"music_volume" : music_volume,
 			"speech_volume" : speech_volume
 		},
-		"video": {
+		"other": {
 			"particles" : particles,
-			"fullscreen" : fullscreen
+			"fullscreen" : fullscreen,
+			"screenshake" : screenshake
 		},
 		"actions" : action_map
 	}
@@ -128,9 +130,10 @@ func _set_from_data(data: Dictionary) -> void:
 		set_music_volume(data["sound"].get("music_volume", DEFAULT_VOLUME))
 		set_speech_volume(data["sound"].get("speech_volume", DEFAULT_VOLUME))
 	
-	if data.has("video"):
-		set_fullscreen(data["video"].get("fullscreen", true))
-		particles = data["video"].get("particles", true)	
+	if data.has("other"):
+		set_fullscreen(data["other"].get("fullscreen", true))
+		particles = data["other"].get("particles", true)
+		screenshake = data["other"].get("screenshake", true)
 	
 	if data.has("actions"):
 		for action in CONFIGURABLE_KEYS:

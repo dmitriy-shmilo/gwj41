@@ -10,8 +10,9 @@ onready var _keybinding_popup = $"KeyBindingPopup"
 onready var _master_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MasterVolume/VolumeSlider"
 onready var _sfx_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/SfxVolume/VolumeSlider"
 onready var _music_volume_slider = $"VBoxContainer/PanelContainer/TabContainer/SoundSettings/Container/MusicVolume/VolumeSlider"
-onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container/FullscreenCheckbox"
-onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/VideoSettings/Container/ParticlesCheckbox"
+onready var _fullscreen_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/FullscreenCheckbox"
+onready var _particles_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/ParticlesCheckbox"
+onready var _screenshake_checkbox: CheckBox = $"VBoxContainer/PanelContainer/TabContainer/OtherSettings/Container/ScreenshakeCheckbox"
 
 var _current_binding_button: KeyBindingButton = null
 
@@ -19,13 +20,13 @@ func _ready() -> void:
 	_prepare_tabs()
 	_prepare_keybindings()
 	_prepare_volume()
-	_prepare_video()
+	_prepare_other()
 
 
 func _prepare_tabs() -> void:
 	_tab_container.set_tab_title(0, tr("ui_sound_settings"))
-	_tab_container.set_tab_title(1, tr("ui_video_settings"))
-	_tab_container.set_tab_title(2, tr("ui_key_bindings"))
+	_tab_container.set_tab_title(1, tr("ui_key_bindings"))
+	_tab_container.set_tab_title(2, tr("ui_other_settings"))
 
 
 func _prepare_volume() -> void:
@@ -34,9 +35,10 @@ func _prepare_volume() -> void:
 	_music_volume_slider.value = Settings.music_volume
 
 
-func _prepare_video() -> void:
+func _prepare_other() -> void:
 	_fullscreen_checkbox.pressed = Settings.fullscreen
 	_particles_checkbox.pressed = Settings.particles
+	_screenshake_checkbox.pressed = Settings.screenshake
 
 
 func _prepare_keybindings() -> void:
@@ -107,11 +109,10 @@ func _on_ParticlesCheckbox_toggled(button_pressed: bool) -> void:
 	Settings.particles = button_pressed
 
 
-func _on_ParticlesLabel_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouse and event.is_pressed():
-		_particles_checkbox.pressed = !_particles_checkbox.pressed
+func _on_ScreenshakeCheckbox_toggled(button_pressed: bool) -> void:
+	Settings.screenshake = button_pressed
 
 
-func _on_FullscreenLabel_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouse and event.is_pressed():
-		_fullscreen_checkbox.pressed = !_fullscreen_checkbox.pressed
+func _on_Settings_visibility_changed() -> void:
+	if visible:
+		$VBoxContainer/BackToTitleButton.grab_focus()

@@ -18,15 +18,15 @@ __meta__ = {
 }
 
 [node name="TitleLabel" type="Label" parent="."]
-margin_right = 824.0
+margin_right = 760.0
 margin_bottom = 26.0
 text = "ui_credits"
 align = 1
 
 [node name="CreditsText" type="RichTextLabel" parent="."]
 margin_top = 30.0
-margin_right = 824.0
-margin_bottom = 356.0
+margin_right = 760.0
+margin_bottom = 296.0
 size_flags_vertical = 3
 bbcode_enabled = true
 bbcode_text = "[center]Thank you for playing[/center]"
@@ -36,10 +36,10 @@ __meta__ = {
 }
 
 [node name="BackToTitleButton" type="Button" parent="."]
-margin_left = 309.0
-margin_top = 360.0
-margin_right = 515.0
-margin_bottom = 400.0
+margin_left = 277.0
+margin_top = 300.0
+margin_right = 483.0
+margin_bottom = 340.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 3 )
@@ -48,4 +48,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="visibility_changed" from="." to="." method="_on_CreditsScreen_visibility_changed"]
 [connection signal="meta_clicked" from="CreditsText" to="." method="_on_CreditsText_meta_clicked"]

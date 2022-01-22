@@ -138,7 +138,6 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 2
 playing = true
 centered = false
 
@@ -368,6 +367,7 @@ bus = "Sfx"
 
 [node name="Fader" parent="." instance=ExtResource( 16 )]
 
+[connection signal="visibility_changed" from="Gui/PauseContainer" to="Gui" method="_on_PauseContainer_visibility_changed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="special_pressed" from="Submarine" to="." method="_on_Submarine_special_pressed"]

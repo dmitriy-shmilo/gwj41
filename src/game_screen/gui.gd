@@ -84,3 +84,7 @@ func update_powerup(powerup: Powerup) -> void:
 		return
 	
 	_powerup_label.text = tr(powerup.title)
+
+
+func _on_PauseContainer_visibility_changed() -> void:
+	$PauseContainer/VBoxContainer/HBoxContainer/ContinueButton.grab_focus()

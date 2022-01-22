@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		move_and_slide(Vector2.UP * _up_speed)
 		return
 		
-	if not Input.is_action_pressed("interact"):
+	if not Input.is_action_pressed("ui_accept"):
 		_movement_sound_player.stop()
 		return
 	

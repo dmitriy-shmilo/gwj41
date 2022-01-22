@@ -51,3 +51,5 @@ margin_top = 228.0
 margin_right = 128.0
 margin_bottom = 248.0
 text = "ui_quit"
+
+[connection signal="visibility_changed" from="." to="." method="_on_TitleScene_visibility_changed"]

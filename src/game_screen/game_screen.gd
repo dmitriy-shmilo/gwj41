@@ -156,7 +156,8 @@ func _on_item_collected(item) -> void:
 			_invincibility_left = INVINCIBILITY_TIME
 			_set_lives(_lives - 1)
 			_submarine.start_blinking()
-			_screen_shaker.shake_vertical(self, "position", 25)
+			if Settings.screenshake:
+				_screen_shaker.shake_vertical(self, "position", 25)
 		item.disappear()
 
 

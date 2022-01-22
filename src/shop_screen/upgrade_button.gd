@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _unhandled_key_input(event: InputEventKey) -> void:
-	if event.is_action("interact"):
+	if event.is_action("ui_accept"):
 		_purchase_upgrade()
 
 

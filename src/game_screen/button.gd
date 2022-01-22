@@ -10,7 +10,7 @@ onready var _hint_label = $"HintLabel"
 
 
 func _ready() -> void:
-	var key = InputMap.get_action_list("interact")[0].as_text()
+	var key = InputMap.get_action_list("ui_accept")[0].as_text()
 	_hint_label.text = tr(action.hint) % key
 
 
