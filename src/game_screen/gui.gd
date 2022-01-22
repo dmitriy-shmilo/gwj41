@@ -10,6 +10,7 @@ onready var _lives_container: HBoxContainer = $"LivesContainer"
 onready var _run_title_label: Label = $"RunTitleLabel"
 onready var _run_title_tween: Tween = $"RunTitleTween"
 onready var _powerup_label: Label = $"PowerupLabel"
+onready var _oxygen_effect_player: AnimationPlayer = $"OxygenBackground/OxygenProgress/EffectPlayer"
 
 func show_run_title(text: String) -> void:
 	var height = _run_title_label.rect_size.y
@@ -17,7 +18,7 @@ func show_run_title(text: String) -> void:
 	var mid_y = get_viewport().size.y / 2 - height / 2
 	var end_y = -height
 	var start_opacity = 0.0
-	var mid_opacity = 0.5
+	var mid_opacity = 0.75
 	var end_opacity = 0.0
 	
 	_run_title_label.text = text
@@ -70,6 +71,11 @@ func update_distance(distance: float) -> void:
 func update_oxygen(current: float, total: float) -> void:
 	_oxygen_progress.max_value = total
 	_oxygen_progress.value = current
+	
+	if current / total > 0.25:
+		_oxygen_effect_player.play("RESET")
+	else:
+		_oxygen_effect_player.play("blink")
 
 
 func update_powerup(powerup: Powerup) -> void:

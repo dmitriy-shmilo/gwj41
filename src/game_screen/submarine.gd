@@ -9,12 +9,18 @@ export(Vector2) var direction = Vector2.ZERO
 
 onready var _effect_player: AnimationPlayer = $"EffectPlayer"
 onready var _movement_sound_player: AudioStreamPlayer = $"MovementSoundPlayer"
+onready var _body_shape: CollisionShape2D = $"BodyShape"
 
 var _current_button: ActionButton
 var _up_speed = base_up_speed
 var _down_speed = base_down_speed
+var _is_emerging = false
 
 func _process(delta: float) -> void:
+	if _is_emerging:
+		move_and_slide(Vector2.UP * _up_speed)
+		return
+		
 	if not Input.is_action_pressed("interact"):
 		_movement_sound_player.stop()
 		return
@@ -41,6 +47,12 @@ func _process(delta: float) -> void:
 			_movement_sound_player.stream = preload("res://assets/sound/sfx_sub_descend.wav")
 			_movement_sound_player.play()
 		move_and_slide(direction * _down_speed)
+
+
+func emerge() -> void:
+	modify_vspeed(25.0)
+	_body_shape.set_deferred("disabled", true)
+	_is_emerging = true
 
 
 func modify_vspeed(modifier: float) -> void:

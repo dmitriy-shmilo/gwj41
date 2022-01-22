@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://game_screen/game_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=2]
@@ -93,6 +93,37 @@ region = Rect2( 464, 48, 48, 160 )
 atlas = ExtResource( 7 )
 region = Rect2( 368, 80, 48, 16 )
 
+[sub_resource type="Animation" id=35]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "blink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.960784, 0, 0.156863 ) ]
+}
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 957.241, 10 )
 
@@ -107,7 +138,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-frame = 4
+frame = 2
 playing = true
 centered = false
 
@@ -128,6 +159,7 @@ anchor_bottom = 0.5
 margin_top = -26.0
 margin_bottom = 26.0
 theme = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "Run #%d"
 align = 1
@@ -256,6 +288,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EffectPlayer" type="AnimationPlayer" parent="Gui/OxygenBackground/OxygenProgress"]
+anims/RESET = SubResource( 35 )
+anims/blink = SubResource( 36 )
+
 [node name="PowerupLabel" type="Label" parent="Gui"]
 margin_left = 16.0
 margin_top = 16.0
@@ -303,6 +339,10 @@ autostart = true
 wait_time = 10.0
 one_shot = true
 
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -80.0
@@ -334,3 +374,4 @@ bus = "Sfx"
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="ProgressTimer" to="." method="_on_ProgressTimer_timeout"]
 [connection signal="timeout" from="SpeedPowerupTimer" to="." method="_on_SpeedPowerupTimer_timeout"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]

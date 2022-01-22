@@ -21,6 +21,7 @@ onready var _end_sound_player: AudioStreamPlayer = $"EndSoundPlayer"
 onready var _powerup_sound_player: AudioStreamPlayer = $"PowerupSoundPlayer"
 onready var _screen_shaker: Shaker = $"ScreenShaker"
 onready var _speed_powerup_timer: Timer = $"SpeedPowerupTimer"
+onready var _game_over_timer: Timer = $"GameOverTimer"
 onready var _fader: Fader = $"Fader"
 
 var _max_lives = 1
@@ -34,7 +35,7 @@ var _base_speed = 50.0
 var _speed = _base_speed
 var _invincibility_left = 0.0
 var _current_powerup: Powerup = null
-
+var _game_over = false
 
 func _ready() -> void:
 	_setup()
@@ -105,19 +106,20 @@ func _set_powerup(value: Powerup) -> void:
 
 
 func _set_lives(value: int) -> void:
-	# TODO: update stats and fade
-	if value < 1:
-		_end_run()
-
 	_lives = value
 	_gui.update_lives(value, _max_lives)
+
+	if not _game_over and value < 1:
+		_gui.show_run_title(tr("txt_no_lives"))
+		_end_run()
 
 
 func _set_oxygen(value: float) -> void:
 	_oxygen = value
 	_gui.update_oxygen(_oxygen, _max_oxygen)
 	
-	if value <= 0:
+	if not _game_over and value <= 0:
+		_gui.show_run_title(tr("txt_no_oxygen"))
 		_end_run()
 
 
@@ -127,15 +129,16 @@ func _set_distance(value: float) -> void:
 
 
 func _end_run() -> void:
-	_fader.fade_out()
+	_game_over = true
+	_game_over_timer.start()
+	_set_speed(0.0)
+	_submarine.emerge()
+	_soundtrack_player.stop()
 	_end_sound_player.play()
 	UserSaveData.best_progress = max(UserSaveData.best_progress, _distance)
 	UserSaveData.current_expedition += 1
 	UserSaveData.is_running = false
 	UserSaveData.soundtrack_time = _soundtrack_player.get_playback_position()
-	UserSaveData.save_data()
-	yield(_fader, "fade_out_completed")
-	get_tree().change_scene("res://score_screen/score_screen.tscn")
 
 
 func _on_item_collected(item) -> void:
@@ -208,3 +211,10 @@ func _on_Submarine_special_pressed(sender) -> void:
 func _on_SpeedPowerupTimer_timeout() -> void:
 	_set_speed(_base_speed)
 	_submarine.modify_vspeed(0.0)
+
+
+func _on_GameOverTimer_timeout() -> void:
+	_fader.fade_out()
+	yield(_fader, "fade_out_completed")
+	UserSaveData.save_data()
+	get_tree().change_scene("res://score_screen/score_screen.tscn")

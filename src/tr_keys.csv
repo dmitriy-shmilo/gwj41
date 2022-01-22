@@ -48,6 +48,8 @@ txt_power_speed_up,"speed up","ускорение"
 txt_power_speed_down,"slow down","замедление"
 txt_power_vspeed_up,"+ maneuverability","+ маневренность"
 txt_power_oxygen_up,"+30sec oxygen","+30сек кислорода"
+txt_no_lives,"Critical damage! Resurface!","Повреждения критические! Всплываем!"
+txt_no_oxygen,"Out of oxygen! Resurface!","Кончается кислород! Всплываем!"
 txt_up_health1,"Hull Upgrade I",
 txt_up_health2,"Hull Upgrade II",
 txt_up_health3,"Hull Upgrade III",
