@@ -17,3 +17,10 @@ func _on_CollisionArea_body_entered(body: Node) -> void:
 	if not body is Submarine:
 		return
 	emit_signal("collected", self)
+	if Settings.particles:
+		$DeathParticles.emitting = true
+
+
+func disappear() -> void:
+	$CollisionArea.set_deferred("disabled", true)
+	_sprite.visible = false

@@ -14,6 +14,9 @@ export(Resource) var powerup = POWERUPS[0]
 onready var _animation_player: AnimationPlayer = $"AnimationPlayer"
 
 func _ready() -> void:
+	$Particles.emitting = Settings.particles
+	$Particles.visible = Settings.particles
+
 	powerup = POWERUPS[randi() % POWERUPS.size()]
 
 
