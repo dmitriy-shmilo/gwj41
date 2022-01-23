@@ -7,7 +7,10 @@ const TREASURE_SCENES = [
 	preload("res://game_screen/treasure2.tscn"),
 	preload("res://game_screen/treasure3.tscn")
 ]
-const ENEMY_SCENE = preload("res://game_screen/enemy.tscn")
+const ENEMY_SCENES = [
+	preload("res://game_screen/enemy1.tscn"),
+	preload("res://game_screen/enemy2.tscn")
+]
 const POWERUP_SCENE = preload("res://game_screen/powerup.tscn")
 const INVINCIBILITY_TIME = 2.0
 
@@ -184,7 +187,7 @@ func _on_SpawnTimer_timeout() -> void:
 		1:
 			_spawn(POWERUP_SCENE)
 		2:
-			_spawn(ENEMY_SCENE)
+			_spawn(ENEMY_SCENES[randi() % ENEMY_SCENES.size()])
 
 
 func _on_ProgressTimer_timeout() -> void:

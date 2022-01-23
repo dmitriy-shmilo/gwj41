@@ -1,42 +1,424 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://title_screen/tutorial/tutorial_scene.gd" type="Script" id=1]
 [ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
+[ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/art/char.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/submarine.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/new_upgrade_icon.tres" type="Texture" id=6]
+[ext_resource path="res://game_screen/enemy1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_screen/enemy2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/art/ui.png" type="Texture" id=9]
+[ext_resource path="res://game_screen/treasure2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game_screen/powerup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game_screen/treasure1.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game_screen/treasure3.tscn" type="PackedScene" id=13]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 9 )
+region = Rect2( 464, 48, 48, 160 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 9 )
+region = Rect2( 368, 80, 48, 16 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "blink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.960784, 0, 0.156863 ) ]
+}
 
 [node name="VBoxContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
-margin_top = 100.0
-margin_right = -100.0
-margin_bottom = -100.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
-margin_right = 760.0
-margin_bottom = 14.0
-text = "How To Play"
+[node name="Label" type="Label" parent="."]
+margin_right = 928.0
+margin_bottom = 26.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "txt_tutorial"
 align = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_top = 18.0
-margin_right = 760.0
-margin_bottom = 316.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_top = 30.0
+margin_right = 928.0
+margin_bottom = 464.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="Slide1" type="Control" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 427.0
 
-[node name="BackToTitleButton" type="Button" parent="."]
-margin_left = 325.0
-margin_top = 320.0
-margin_right = 435.0
-margin_bottom = 340.0
+[node name="AnimatedSprite" type="AnimatedSprite" parent="PanelContainer/Slide1"]
+position = Vector2( 167, 227 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="Label" type="Label" parent="PanelContainer/Slide1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.5
+margin_top = -71.0
+margin_right = 229.5
+margin_bottom = 71.0
+text = "ui_tutorial_1"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slide2" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 457.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -445.0
+margin_top = -209.0
+margin_right = 439.0
+margin_bottom = 20.0
+text = "ui_tutorial_2"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Submarine" type="Sprite" parent="PanelContainer/Slide2"]
+position = Vector2( 413, 318 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="PanelContainer/Slide2"]
+margin_left = 207.0
+margin_top = 228.0
+margin_right = 363.0
+margin_bottom = 254.0
+text = "ui_tutorial_2_1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="PanelContainer/Slide2"]
+margin_left = 526.0
+margin_top = 257.0
+margin_right = 694.0
+margin_bottom = 283.0
+text = "ui_tutorial_2_2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="PanelContainer/Slide2"]
+margin_left = 406.0
+margin_top = 392.0
+margin_right = 574.0
+margin_bottom = 418.0
+text = "ui_tutorial_2_3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slide3" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 457.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.5
+margin_top = -85.5
+margin_right = 229.5
+margin_bottom = 85.5
+text = "ui_tutorial_3"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Treasure" parent="PanelContainer/Slide3" instance=ExtResource( 12 )]
+position = Vector2( 170, 218 )
+scale = Vector2( 3, 3 )
+
+[node name="Treasure2" parent="PanelContainer/Slide3" instance=ExtResource( 10 )]
+position = Vector2( 94, 271 )
+scale = Vector2( 3, 3 )
+
+[node name="Treasure3" parent="PanelContainer/Slide3" instance=ExtResource( 13 )]
+position = Vector2( 92, 183 )
+scale = Vector2( 3, 3 )
+
+[node name="Slide4" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 427.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -354.0
+margin_top = -85.5
+margin_right = 105.0
+margin_bottom = 85.5
+text = "ui_tutorial_4"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enemy" parent="PanelContainer/Slide4" instance=ExtResource( 7 )]
+position = Vector2( 702, 145 )
+scale = Vector2( 3, 3 )
+
+[node name="Enemy2" parent="PanelContainer/Slide4" instance=ExtResource( 8 )]
+position = Vector2( 741, 300 )
+scale = Vector2( 3, 3 )
+
+[node name="Slide5" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 427.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.5
+margin_top = -85.5
+margin_right = 229.5
+margin_bottom = 85.5
+text = "ui_tutorial_5"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Powerup" parent="PanelContainer/Slide5" instance=ExtResource( 11 )]
+position = Vector2( 119, 243 )
+scale = Vector2( 3, 3 )
+
+[node name="Slide6" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 427.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.5
+margin_top = -85.5
+margin_right = 229.5
+margin_bottom = 85.5
+text = "ui_tutorial_6"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OxygenBackground" type="TextureRect" parent="PanelContainer/Slide6"]
+margin_left = 82.0
+margin_top = 135.0
+margin_right = 130.0
+margin_bottom = 295.0
+texture = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OxygenProgress" type="TextureProgress" parent="PanelContainer/Slide6/OxygenBackground"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -48.0
+margin_top = 33.0
+margin_bottom = 147.0
+value = 66.0
+texture_progress = SubResource( 6 )
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="PanelContainer/Slide6/OxygenBackground/OxygenProgress"]
+anims/RESET = SubResource( 7 )
+anims/blink = SubResource( 8 )
+
+[node name="Slide7" type="Control" parent="PanelContainer"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 921.0
+margin_bottom = 427.0
+
+[node name="Label" type="Label" parent="PanelContainer/Slide7"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -229.5
+margin_top = -53.0
+margin_right = 229.5
+margin_bottom = 118.0
+text = "ui_tutorial_7"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="Button" parent="PanelContainer/Slide7"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -85.0
+margin_top = 76.0
+margin_right = 85.0
+margin_bottom = 116.0
+shortcut_in_tooltip = false
+button_mask = 0
+text = "ui_shop_title"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewUpgradesIndicator" type="TextureRect" parent="PanelContainer/Slide7/ShopButton"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -11.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 11.0
+rect_pivot_offset = Vector2( 8, 8 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewUpgradesTween" type="Tween" parent="PanelContainer/Slide7/ShopButton"]
+repeat = true
+playback/repeat = true
+
+[node name="Controls" type="HBoxContainer" parent="."]
+margin_top = 468.0
+margin_right = 928.0
+margin_bottom = 508.0
+
+[node name="BackToTitleButton" type="Button" parent="Controls"]
+margin_right = 206.0
+margin_bottom = 40.0
 size_flags_horizontal = 4
 shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
 text = "ui_back_to_title"
 
+[node name="Control" type="Control" parent="Controls"]
+margin_left = 210.0
+margin_right = 820.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="PrevButton" type="Button" parent="Controls"]
+margin_left = 824.0
+margin_right = 874.0
+margin_bottom = 40.0
+size_flags_horizontal = 4
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = " < "
+
+[node name="NextButton" type="Button" parent="Controls"]
+margin_left = 878.0
+margin_right = 928.0
+margin_bottom = 40.0
+size_flags_horizontal = 4
+shortcut_in_tooltip = false
+shortcut = ExtResource( 2 )
+text = " > "
+
 [connection signal="visibility_changed" from="." to="." method="_on_VBoxContainer_visibility_changed"]
+[connection signal="pressed" from="Controls/BackToTitleButton" to="." method="_on_BackToTitleButton_pressed"]
+[connection signal="pressed" from="Controls/PrevButton" to="." method="_on_PrevButton_pressed"]
+[connection signal="pressed" from="Controls/NextButton" to="." method="_on_NextButton_pressed"]
