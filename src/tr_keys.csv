@@ -21,6 +21,7 @@ ui_back_to_title,Back,Назад
 ui_quit,Quit,Выход
 ui_shop_title,"Upgrades","Улучшения"
 ui_new_run,"Descend Again","Погрузиться Снова"
+ui_powerup_title,"Powerup:","Бонус:"
 key_ui_up,Up,Вверх
 key_ui_down,Down,Вниз
 key_ui_left,Left,Влево
@@ -44,7 +45,8 @@ txt_action_special,"Powerup","Предмет"
 txt_action_hint_unknown,"[%s] to activate","[%s] активировать"
 txt_action_hint_ascend,"[%s] to ascend","[%s] всплытие"
 txt_action_hint_descend,"[%s] to descend","[%s] погружение"
-txt_action_hint_special,"[%s] to use powerup","[%s] использовать предмет"
+txt_action_hint_special,"[%s] to use powerup","[%s] использовать бонус"
+txt_action_hint_no_special,"No powerup to use","Нет бонуса для использования"
 txt_power_hp_up,"+1 hp","+1 hp"
 txt_power_speed_up,"speed up","ускорение"
 txt_power_speed_down,"slow down","замедление"

@@ -9,7 +9,10 @@ onready var _treasure_label: Label = $"TreasureLabel"
 onready var _lives_container: HBoxContainer = $"LivesContainer"
 onready var _run_title_label: Label = $"RunTitleLabel"
 onready var _run_title_tween: Tween = $"RunTitleTween"
-onready var _powerup_label: Label = $"PowerupLabel"
+onready var _powerup_tween: Tween = $"PowerupTween"
+onready var _powerup_container: Control = $"PowerupContainer"
+onready var _powerup_description: Label = $"PowerupContainer/PowerupDescription"
+onready var _powerup_icon: TextureRect = $"PowerupContainer/PowerupBackground/PowerupIcon"
 onready var _oxygen_effect_player: AnimationPlayer = $"OxygenBackground/OxygenProgress/EffectPlayer"
 
 func show_run_title(text: String) -> void:
@@ -79,11 +82,27 @@ func update_oxygen(current: float, total: float) -> void:
 
 
 func update_powerup(powerup: Powerup) -> void:
+	_powerup_tween.stop_all()
+	_powerup_tween.interpolate_property(_powerup_container,
+		"rect_position",
+		_powerup_container.rect_position, Vector2(0, -_powerup_container.rect_size.y),
+		0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_powerup_tween.start()
+	
+	yield(_powerup_tween, "tween_all_completed")
+		
 	if powerup == null:
-		_powerup_label.text = ""
+		_powerup_description.text = ""
+		_powerup_icon.texture = null
 		return
 	
-	_powerup_label.text = tr(powerup.title)
+	_powerup_tween.interpolate_property(_powerup_container,
+		"rect_position",
+		_powerup_container.rect_position, Vector2.ZERO,
+		0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	_powerup_description.text = tr(powerup.title)
+	_powerup_icon.texture = powerup.icon
+	_powerup_tween.start()
 
 
 func _on_PauseContainer_visibility_changed() -> void:
