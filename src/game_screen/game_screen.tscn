@@ -155,7 +155,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer3"]
 frames = SubResource( 18 )
-frame = 11
+frame = 8
 playing = true
 centered = false
 

@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_screen/chunks/random_enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game_screen/chunks/chunk.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_screen/chunks/random_treasure.tscn" type="PackedScene" id=3]
+
+[node name="Chunk" instance=ExtResource( 2 )]
+
+[node name="RandomEnemy" parent="." index="1" instance=ExtResource( 1 )]
+position = Vector2( 58, 58 )
+allow_empty = false
+
+[node name="RandomEnemy2" parent="." index="2" instance=ExtResource( 1 )]
+position = Vector2( 57, 125 )
+
+[node name="RandomEnemy3" parent="." index="3" instance=ExtResource( 1 )]
+position = Vector2( 42, 467 )
+allow_empty = false
+
+[node name="RandomEnemy4" parent="." index="4" instance=ExtResource( 1 )]
+position = Vector2( 42, 392 )
+
+[node name="RandomEnemy5" parent="." index="5" instance=ExtResource( 1 )]
+position = Vector2( 333, 392 )
+
+[node name="RandomEnemy6" parent="." index="6" instance=ExtResource( 1 )]
+position = Vector2( 338, 280 )
+
+[node name="RandomEnemy8" parent="." index="7" instance=ExtResource( 1 )]
+position = Vector2( 876, 185 )
+allow_empty = false
+
+[node name="RandomEnemy9" parent="." index="8" instance=ExtResource( 1 )]
+position = Vector2( 881, 73 )
+allow_empty = false
+
+[node name="RandomEnemy10" parent="." index="9" instance=ExtResource( 1 )]
+position = Vector2( 749, 48 )
+allow_empty = false
+
+[node name="RandomEnemy11" parent="." index="10" instance=ExtResource( 1 )]
+position = Vector2( 492, 99 )
+allow_empty = false
+
+[node name="RandomEnemy7" parent="." index="11" instance=ExtResource( 1 )]
+position = Vector2( 516, 331 )
+
+[node name="RandomTreasure" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 630, 335 )

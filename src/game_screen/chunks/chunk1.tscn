@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game_screen/chunks/chunk.gd" type="Script" id=1]
+[ext_resource path="res://game_screen/chunks/random_enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game_screen/chunks/random_treasure.tscn" type="PackedScene" id=3]
+
+[node name="Chunk" type="Node2D" groups=["chunks"]]
+script = ExtResource( 1 )
+
+[node name="End" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 1323, 280 )
+
+[node name="RandomEnemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 104, 70 )
+
+[node name="RandomEnemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 104, 190 )
+
+[node name="RandomEnemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 104, 325 )
+
+[node name="RandomEnemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 392, 220 )
+
+[node name="RandomEnemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 392, 340 )
+
+[node name="RandomEnemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 392, 475 )
+
+[node name="RandomEnemy7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 687, 25 )
+
+[node name="RandomEnemy8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 687, 145 )
+
+[node name="RandomEnemy9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 687, 280 )
+
+[node name="RandomEnemy10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 989, 196 )
+
+[node name="RandomEnemy11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 989, 316 )
+
+[node name="RandomEnemy12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 989, 492 )
+
+[node name="RandomEnemy13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1231, 32 )
+
+[node name="RandomEnemy14" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1231, 152 )
+
+[node name="RandomEnemy15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1231, 287 )
+
+[node name="RandomTreasure" parent="." instance=ExtResource( 3 )]
+position = Vector2( 106, 447 )
+
+[node name="RandomTreasure2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 685, 424 )
+
+[node name="RandomTreasure3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1230, 441 )
+
+[node name="RandomTreasure4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 996, 65 )
+
+[node name="RandomTreasure5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 392, 89 )
+
+[connection signal="screen_entered" from="End" to="." method="_on_End_screen_entered"]
