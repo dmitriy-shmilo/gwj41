@@ -46,6 +46,13 @@ func _on_upgrade_selected(sender, upgrade: Upgrade) -> void:
 
 
 func _on_upgrade_purchased(sender, upgrade: Upgrade) -> void:
+	if upgrade.id == preload("res://data/upgrades/finish.tres").id:
+		_fader.fade_out()
+		UserSaveData.menu_soundtrack_time = _soundtrack_player.get_playback_position()
+		UserSaveData.is_running = false
+		yield(_fader, "fade_out_completed")
+		UserSaveData.save_data()
+		get_tree().change_scene("res://game_over_screen/game_over_screen.tscn")
 	_refresh()
 	# this will refresh the sidebar
 	_on_upgrade_selected(sender, upgrade)

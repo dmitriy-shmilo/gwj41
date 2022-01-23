@@ -126,9 +126,6 @@ visible = false
 [node name="TutorialScene" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="AnimatedSprite" parent="TutorialScene/PanelContainer/Slide1" index="0"]
-frame = 0
-
 [node name="Fader" parent="." instance=ExtResource( 7 )]
 audio_player = NodePath("../SoundtrackPlayer")
 
@@ -152,7 +149,7 @@ centered = false
 
 [node name="OceanTop" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer3"]
 frames = SubResource( 35 )
-frame = 4
+frame = 5
 playing = true
 centered = false
 

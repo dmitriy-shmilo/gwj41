@@ -1,8 +1,85 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://game_over_screen/game_over_screen.gd" type="Script" id=1]
 [ext_resource path="res://ui/cancel_shortcut.tres" type="ShortCut" id=2]
 [ext_resource path="res://ui/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://ui/fader.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game_screen/enemy1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game_screen/enemy2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_screen/treasure2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game_screen/treasure1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game_screen/treasure3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/art/background1.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/ocean.png" type="Texture" id=11]
+[ext_resource path="res://assets/art/background2.png" type="Texture" id=12]
+[ext_resource path="res://assets/art/ocen_top.png" type="Texture" id=13]
+[ext_resource path="res://assets/art/background.png" type="Texture" id=14]
+[ext_resource path="res://game_screen/parallax.gd" type="Script" id=15]
+[ext_resource path="res://game_screen/powerup.tscn" type="PackedScene" id=16]
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 73, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 146, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 219, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 292, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 365, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 438, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 511, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 584, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 657, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 730, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 803, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 876, 960, 73 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 949, 960, 73 )
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
 
 [node name="GameOverScreen" type="VBoxContainer"]
 anchor_top = 0.00115601
@@ -18,35 +95,137 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
-margin_right = 824.0
-margin_bottom = 13.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_right = 760.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 753.0
+margin_bottom = 289.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Treasure" parent="PanelContainer/Control" instance=ExtResource( 8 )]
+position = Vector2( 724, 360.376 )
+scale = Vector2( 3, 3 )
+
+[node name="Powerup" parent="PanelContainer/Control" instance=ExtResource( 16 )]
+position = Vector2( -92, 137.376 )
+scale = Vector2( 3, 3 )
+
+[node name="Treasure2" parent="PanelContainer/Control" instance=ExtResource( 7 )]
+position = Vector2( 805, -48.6242 )
+scale = Vector2( 3, 3 )
+
+[node name="Treasure3" parent="PanelContainer/Control" instance=ExtResource( 9 )]
+position = Vector2( 79, -12.6242 )
+scale = Vector2( 3, 3 )
+
+[node name="Treasure4" parent="PanelContainer/Control" instance=ExtResource( 9 )]
+position = Vector2( 440, 431.376 )
+scale = Vector2( 3, 3 )
+
+[node name="Enemy" parent="PanelContainer/Control" instance=ExtResource( 5 )]
+position = Vector2( 783, 217.376 )
+scale = Vector2( 3, 3 )
+
+[node name="Enemy3" parent="PanelContainer/Control" instance=ExtResource( 5 )]
+position = Vector2( -61, -46.6242 )
+scale = Vector2( -3, 3 )
+
+[node name="Enemy2" parent="PanelContainer/Control" instance=ExtResource( 6 )]
+position = Vector2( 59, 301.376 )
+scale = Vector2( 3, 3 )
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/Control"]
+margin_top = 2.37576
+margin_right = 760.0
+margin_bottom = 28.3758
 size_flags_vertical = 2
-text = "Game Over :("
+text = "ui_win_title"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageLabel" type="Label" parent="PanelContainer/Control"]
+margin_top = 50.3758
+margin_right = 760.0
+margin_bottom = 76.3758
+size_flags_vertical = 2
+text = "ui_win_message"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 381.0
-margin_right = 824.0
-margin_bottom = 400.0
+margin_top = 300.0
+margin_right = 760.0
+margin_bottom = 340.0
 alignment = 1
 
 [node name="QuitButton" type="Button" parent="HBoxContainer"]
-margin_left = 333.0
-margin_right = 387.0
-margin_bottom = 19.0
+margin_left = 331.0
+margin_right = 429.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 shortcut_in_tooltip = false
 shortcut = ExtResource( 2 )
 text = "ui_quit"
 
-[node name="RetryButton" type="Button" parent="HBoxContainer"]
-margin_left = 391.0
-margin_right = 491.0
-margin_bottom = 19.0
-rect_min_size = Vector2( 100, 0 )
-shortcut_in_tooltip = false
-text = "ui_retry"
+[node name="Fader" parent="." instance=ExtResource( 4 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 15 )
+speed = 20.0
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 0, -54 )
+scale = Vector2( 1, 1.24259 )
+texture = ExtResource( 14 )
+centered = false
+
+[node name="OceanTop" type="AnimatedSprite" parent="ParallaxBackground/ParallaxLayer3"]
+frames = SubResource( 35 )
+frame = 1
+playing = true
+centered = false
+
+[node name="Ocean" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 11 )
+centered = false
+offset = Vector2( 0, 73 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 284 )
+motion_scale = Vector2( 0.75, 0 )
+motion_offset = Vector2( 2, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 12 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 256 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 450 )
+motion_scale = Vector2( 1.1, 0 )
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1024, 90 )
 
 [connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
