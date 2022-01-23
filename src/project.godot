@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://title_screen/settings/keybinding_button.gd"
 }, {
+"base": "ParallaxBackground",
+"class": "Parallax",
+"language": "GDScript",
+"path": "res://game_screen/parallax.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -113,6 +118,7 @@ _global_script_class_icons={
 "Fader": "",
 "Gui": "",
 "KeyBindingButton": "",
+"Parallax": "",
 "Player": "",
 "Powerup": "",
 "PowerupCollectable": "",

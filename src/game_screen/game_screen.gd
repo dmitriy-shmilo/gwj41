@@ -23,6 +23,7 @@ onready var _screen_shaker: Shaker = $"ScreenShaker"
 onready var _speed_powerup_timer: Timer = $"SpeedPowerupTimer"
 onready var _game_over_timer: Timer = $"GameOverTimer"
 onready var _fader: Fader = $"Fader"
+onready var _parallax: Parallax = $"ParallaxBackground"
 
 var _max_lives = 1
 var _lives = 1
@@ -38,6 +39,7 @@ var _current_powerup: Powerup = null
 var _game_over = false
 
 func _ready() -> void:
+	_set_speed(_base_speed)
 	_setup()
 	_soundtrack_player.play(UserSaveData.soundtrack_time)
 	UserSaveData.is_running = true
@@ -90,6 +92,7 @@ func _spawn(scene) -> void:
 
 func _set_speed(value: float) -> void:
 	_speed = value
+	_parallax.speed = value
 	for item in get_tree().get_nodes_in_group("items"):
 		(item as Collectable).velocity = Vector2(-_speed, 0)
 
