@@ -366,6 +366,7 @@ bus = "Sfx"
 [node name="ScreenShaker" parent="." instance=ExtResource( 11 )]
 
 [node name="Fader" parent="." instance=ExtResource( 16 )]
+audio_player = NodePath("../SoundtrackPlayer")
 
 [connection signal="visibility_changed" from="Gui/PauseContainer" to="Gui" method="_on_PauseContainer_visibility_changed"]
 [connection signal="pressed" from="Gui/PauseContainer/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
